@@ -5,6 +5,16 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abrahams.SnippetLibrary.WPF", "Abrahams.SnippetLibrary.WPF\Abrahams.SnippetLibrary.WPF.csproj", "{89EAA444-894B-4C21-8BF6-DC7A0D3E2EFC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abrahams.SnippetLibrary", "Abrahams.SnippetLibrary\Abrahams.SnippetLibrary.csproj", "{A46DDF85-4E5D-4BBB-A5EF-39084096A5CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abrahams.SnippetLibrary.DAL", "Abrahams.SnippetLibrary.DAL\Abrahams.SnippetLibrary.DAL.csproj", "{39175FA9-0A45-4F3C-AE3E-8B8A787B5D9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abrahams.SnippetLibrary.DomainModel", "Abrahams.SnippetLibrary.DomainModel\Abrahams.SnippetLibrary.DomainModel.csproj", "{1A522565-ED3F-4945-9BAD-E58545C95DA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abrahams.SnippetLibrary.UI", "Abrahams.SnippetLibrary.UI\Abrahams.SnippetLibrary.UI.csproj", "{19A485F3-4B2C-46BB-AD45-97776E7B4247}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abrahams.SnippetLibrary.Test", "Abrahams.SnippetLibrary.Test\Abrahams.SnippetLibrary.Test.csproj", "{FEFF2EF7-25F1-4897-A1B7-54854FC1B696}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +25,26 @@ Global
 		{89EAA444-894B-4C21-8BF6-DC7A0D3E2EFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89EAA444-894B-4C21-8BF6-DC7A0D3E2EFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89EAA444-894B-4C21-8BF6-DC7A0D3E2EFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A46DDF85-4E5D-4BBB-A5EF-39084096A5CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A46DDF85-4E5D-4BBB-A5EF-39084096A5CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A46DDF85-4E5D-4BBB-A5EF-39084096A5CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A46DDF85-4E5D-4BBB-A5EF-39084096A5CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39175FA9-0A45-4F3C-AE3E-8B8A787B5D9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39175FA9-0A45-4F3C-AE3E-8B8A787B5D9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39175FA9-0A45-4F3C-AE3E-8B8A787B5D9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39175FA9-0A45-4F3C-AE3E-8B8A787B5D9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A522565-ED3F-4945-9BAD-E58545C95DA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A522565-ED3F-4945-9BAD-E58545C95DA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A522565-ED3F-4945-9BAD-E58545C95DA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A522565-ED3F-4945-9BAD-E58545C95DA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19A485F3-4B2C-46BB-AD45-97776E7B4247}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19A485F3-4B2C-46BB-AD45-97776E7B4247}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19A485F3-4B2C-46BB-AD45-97776E7B4247}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19A485F3-4B2C-46BB-AD45-97776E7B4247}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEFF2EF7-25F1-4897-A1B7-54854FC1B696}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEFF2EF7-25F1-4897-A1B7-54854FC1B696}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEFF2EF7-25F1-4897-A1B7-54854FC1B696}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEFF2EF7-25F1-4897-A1B7-54854FC1B696}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
