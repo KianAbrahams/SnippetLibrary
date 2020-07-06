@@ -1,0 +1,36 @@
+<html>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.0/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+
+    <h1>Component Diagram</h1>
+    <div class="mermaid">
+      graph TD
+        subgraph Entry Points
+          id1(Abrahams.SnippetLibrary.WPF)
+          style id1 fill:#C6E0B4
+          id2(Abrahams.SnippetLibrary.Test)
+          style id2 fill:#FFE699
+        end
+
+        subgraph Core
+          id3(Abrahams.SnippetLibrary)
+          style id3 fill:#B4C6E7
+          id4(Abrahams.SnippetLibrary.DAL)
+          style id4 fill:#B4C6E7
+          id5(Abrahams.SnippetLibrary.DomainModel)
+          style id5 fill:#B4C6E7
+          id6(Abrahams.SnippetLibrary.UI)
+          style id6 fill:#B4C6E7
+        end
+
+        id1 --> id4
+        id1 --> id5
+        id2 --> id5
+
+        id4 --> id3
+        id5 --> id3
+        id6 --> id3
+    </div>
+  </body>
+</html>
