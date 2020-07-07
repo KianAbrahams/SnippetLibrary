@@ -2,11 +2,13 @@
 
 namespace Abrahams.SnippetLibrary.DomainModel.Validation
 {
-    public class CodeSnippetValidator : FluentValidation.AbstractValidator<CodeSnippet>
+    public class CodeSnippetValidator : AbstractValidator<CodeSnippet>
     {
         public CodeSnippetValidator()
         {
-            this.RuleFor(x => x.Decription).NotEmpty().NotNull();
+            const string requirederrormessage = "Please enter a '{PropertyName}'.";
+            this.RuleFor(x => x.Decription).NotEmpty().WithMessage(requirederrormessage);
+            this.RuleFor(x => x.CodeSample).NotEmpty().WithMessage(requirederrormessage);
         }
     }
 }

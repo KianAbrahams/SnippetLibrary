@@ -22,17 +22,12 @@ namespace Abrahams.SnippetLibrary.Test
         public void Return_IsValid_Given_a_valid_code_snippet()
         {
             // Arrange 
-            var codeSnippet = new CodeSnippet();
-            codeSnippet.Decription = "Test code snippet";
-
-            var codeSnippetValidator = new CodeSnippetValidator();
+            var codeSnippet = CreateCodeSnippet("Test code snippet", "var num = 42");
 
             // Act 
-            var result = codeSnippetValidator.Validate(codeSnippet);
+            var result = new CodeSnippetValidator().Validate(codeSnippet);
 
             // Assert
-            codeSnippet.Should().NotBeNull();
-            codeSnippetValidator.Should().NotBeNull();
             result.Should().NotBeNull();
             result.IsValid.Should().BeTrue();
         }
@@ -41,19 +36,36 @@ namespace Abrahams.SnippetLibrary.Test
         public void Return_Validation_error_Given_a_code_snippet_with_a_zero_length_description()
         {
             // Arrange 
-            var codeSnippet = new CodeSnippet();
-            codeSnippet.Decription = string.Empty;
-
-            var codeSnippetValidator = new CodeSnippetValidator();
+            var codeSnippet = CreateCodeSnippet(string.Empty, "var num = 42");
 
             // Act 
-            var result = codeSnippetValidator.Validate(codeSnippet);
+            var result = new CodeSnippetValidator().Validate(codeSnippet);
 
             // Assert
-            codeSnippet.Should().NotBeNull();
-            codeSnippetValidator.Should().NotBeNull();
-            result.Should().NotBeNull();
             result.IsValid.Should().BeFalse();
+            result.Errors.Should().HaveCount(1);
+            result.Errors[0].ErrorMessage.Should().Be("Please enter a 'Decription'.");
         }
+
+        [Test]
+        public void Return_Validation_error_Given_a_code_snippet_with_a_zero_length_code_sample()
+        {
+            // Arrange 
+            var codeSnippet = CreateCodeSnippet("Test code snippet", string.Empty);
+
+            // Act 
+            var result = new CodeSnippetValidator().Validate(codeSnippet);
+
+            // Assert
+            result.IsValid.Should().BeFalse();
+            result.Errors.Should().HaveCount(1);
+            result.Errors[0].ErrorMessage.Should().Be("Please enter a 'Code Sample'.");
+        }
+
+        private static CodeSnippet CreateCodeSnippet(string description, string codesample) => new CodeSnippet
+        {
+            Decription = description,
+            CodeSample = codesample
+        };
     }
 }
