@@ -2,7 +2,7 @@
 
 namespace Abrahams.SnippetLibrary.DomainModel.Validation
 {
-    public class LanguageValidator : AbstractValidator<Language>
+    public class LanguageValidator : ValidatorBase<Language>
     {
         public LanguageValidator()
         {
