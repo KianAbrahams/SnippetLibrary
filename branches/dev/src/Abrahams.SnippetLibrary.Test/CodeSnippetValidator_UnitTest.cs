@@ -25,7 +25,7 @@ namespace Abrahams.SnippetLibrary.Test
             var codeSnippet = CreateCodeSnippet("Test code snippet", "var num = 42");
 
             // Act 
-            var result = new CodeSnippetValidator().Validate(codeSnippet);
+            var result = new CodeSnippetValidator(new LanguageValidator()).Validate(codeSnippet);
 
             // Assert
             result.Should().NotBeNull();
@@ -39,7 +39,7 @@ namespace Abrahams.SnippetLibrary.Test
             var codeSnippet = CreateCodeSnippet(string.Empty, "var num = 42");
 
             // Act 
-            var result = new CodeSnippetValidator().Validate(codeSnippet);
+            var result = new CodeSnippetValidator(new LanguageValidator()).Validate(codeSnippet);
 
             // Assert
             result.IsValid.Should().BeFalse();
@@ -54,7 +54,7 @@ namespace Abrahams.SnippetLibrary.Test
             var codeSnippet = CreateCodeSnippet("Test code snippet", string.Empty);
 
             // Act 
-            var result = new CodeSnippetValidator().Validate(codeSnippet);
+            var result = new CodeSnippetValidator(new LanguageValidator()).Validate(codeSnippet);
 
             // Assert
             result.IsValid.Should().BeFalse();
@@ -62,26 +62,27 @@ namespace Abrahams.SnippetLibrary.Test
             result.Errors[0].ErrorMessage.Should().Be("Please enter a 'Code Sample'.");
         }
 
-        [Test][Ignore("WIP")]
+        [Test]
         public void Return_Validation_error_Given_a_code_snippet_without_a_language()
         {
             // Arrange 
             var codeSnippet = CreateCodeSnippet("Test code snippet", "var num = 42");
+            codeSnippet.Language = null;
 
             // Act 
-            var result = new CodeSnippetValidator().Validate(codeSnippet);
+            var result = new CodeSnippetValidator(new LanguageValidator()).Validate(codeSnippet);
 
             // Assert
             result.IsValid.Should().BeFalse();
             result.Errors.Should().HaveCount(1);
-            result.Errors[0].ErrorMessage.Should().Be("Please select a 'language'.");
+            result.Errors[0].ErrorMessage.Should().Be("Please select a 'Language'.");
         }
 
         private static CodeSnippet CreateCodeSnippet(string description, string codesample) => new CodeSnippet
         {
             Decription = description,
             CodeSample = codesample,
-            Language = new Language()
+            Language = new Language() { Id = 0, Name="C#"}
         };
     }
 }
