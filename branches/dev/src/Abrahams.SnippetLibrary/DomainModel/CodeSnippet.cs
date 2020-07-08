@@ -4,5 +4,6 @@
     {
         public string Decription { get; set; }
         public string CodeSample { get; set; }
+        public Language Language { get; set; }
     }
 }

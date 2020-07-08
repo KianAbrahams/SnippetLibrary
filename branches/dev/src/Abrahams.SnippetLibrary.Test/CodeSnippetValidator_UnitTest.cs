@@ -62,10 +62,26 @@ namespace Abrahams.SnippetLibrary.Test
             result.Errors[0].ErrorMessage.Should().Be("Please enter a 'Code Sample'.");
         }
 
+        [Test][Ignore("WIP")]
+        public void Return_Validation_error_Given_a_code_snippet_without_a_language()
+        {
+            // Arrange 
+            var codeSnippet = CreateCodeSnippet("Test code snippet", "var num = 42");
+
+            // Act 
+            var result = new CodeSnippetValidator().Validate(codeSnippet);
+
+            // Assert
+            result.IsValid.Should().BeFalse();
+            result.Errors.Should().HaveCount(1);
+            result.Errors[0].ErrorMessage.Should().Be("Please select a 'language'.");
+        }
+
         private static CodeSnippet CreateCodeSnippet(string description, string codesample) => new CodeSnippet
         {
             Decription = description,
-            CodeSample = codesample
+            CodeSample = codesample,
+            Language = new Language()
         };
     }
 }

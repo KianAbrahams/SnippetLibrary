@@ -9,6 +9,7 @@ namespace Abrahams.SnippetLibrary.DomainModel.Validation
             const string requirederrormessage = "Please enter a '{PropertyName}'.";
             this.RuleFor(x => x.Decription).NotEmpty().WithMessage(requirederrormessage);
             this.RuleFor(x => x.CodeSample).NotEmpty().WithMessage(requirederrormessage);
+            this.RuleFor(x => x.Language).NotNull().WithMessage("Please select a '{PropertyName}'.");
         }
     }
 }

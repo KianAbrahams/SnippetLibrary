@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CodeSnippetValidator_UnitTest.cs" />
+    <Compile Include="LanguageValidator_UnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MainPageViewModel_UnitTest.cs" />
     <Compile Include="SnippetEditDialogueViewModel_UnitTest.cs" />

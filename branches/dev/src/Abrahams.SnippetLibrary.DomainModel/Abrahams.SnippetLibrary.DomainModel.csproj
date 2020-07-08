@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validation\CodeSnippetValidator.cs" />
+    <Compile Include="Validation\LanguageValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Abrahams.SnippetLibrary\Abrahams.SnippetLibrary.csproj">
