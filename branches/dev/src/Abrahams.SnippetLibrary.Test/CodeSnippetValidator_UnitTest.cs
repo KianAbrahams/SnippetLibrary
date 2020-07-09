@@ -15,7 +15,7 @@ namespace Abrahams.SnippetLibrary.Test
           | CodeSample   |
           | Language     |
           | Tags         |
-       is valid if it's descripton, codesample, language and tags are not null/empty.
+       is valid if it's description, CodeSample, language and tags are not null/empty.
         */
 
         [Test]
@@ -44,7 +44,7 @@ namespace Abrahams.SnippetLibrary.Test
             // Assert
             result.IsValid.Should().BeFalse();
             result.Errors.Should().HaveCount(1);
-            result.Errors[0].ErrorMessage.Should().Be("Please enter a 'Decription'.");
+            result.Errors[0].ErrorMessage.Should().Be("Please enter a 'Description'.");
         }
 
         [Test]
@@ -80,7 +80,7 @@ namespace Abrahams.SnippetLibrary.Test
 
         private static CodeSnippet CreateCodeSnippet(string description, string codesample) => new CodeSnippet
         {
-            Decription = description,
+            Description = description,
             CodeSample = codesample,
             Language = new Language() { Id = 0, Name="C#"}
         };
