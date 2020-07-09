@@ -1,6 +1,4 @@
-﻿using Abrahams.SnippetLibrary.DomainModel;
-using Abrahams.SnippetLibrary.DomainModel.Validation;
-using FluentAssertions;
+﻿using FluentAssertions;
 using NUnit.Framework;
 
 namespace Abrahams.SnippetLibrary.Test
@@ -14,7 +12,7 @@ namespace Abrahams.SnippetLibrary.Test
             var tag = CreateTag("MVVM");
 
             // Act 
-            var result = new TagValidator(new LanguageValidator()).Validate(tag);
+            var result = new TagValidator().Validate(tag);
 
             // Assert
             result.Should().NotBeNull();
@@ -23,8 +21,7 @@ namespace Abrahams.SnippetLibrary.Test
 
         public static Tag CreateTag(string Name) => new Tag
         {
-            name = Name,
-            Language = new Language() { Id = 0, Name = "C#" }
+            name = Name
         };
     }
 }
