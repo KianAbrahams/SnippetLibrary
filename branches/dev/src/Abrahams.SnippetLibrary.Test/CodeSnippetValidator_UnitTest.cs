@@ -25,7 +25,7 @@ namespace Abrahams.SnippetLibrary.Test
             var codeSnippet = CreateCodeSnippet("Test code snippet", "var num = 42");
 
             // Act 
-            var result = new CodeSnippetValidator(new LanguageValidator()).Validate(codeSnippet);
+            var result = new CodeSnippetValidator(new LanguageValidator(), new TagValidator()).Validate(codeSnippet);
 
             // Assert
             result.Should().NotBeNull();
@@ -39,7 +39,7 @@ namespace Abrahams.SnippetLibrary.Test
             var codeSnippet = CreateCodeSnippet(string.Empty, "var num = 42");
 
             // Act 
-            var result = new CodeSnippetValidator(new LanguageValidator()).Validate(codeSnippet);
+            var result = new CodeSnippetValidator(new LanguageValidator(), new TagValidator()).Validate(codeSnippet);
 
             // Assert
             result.IsValid.Should().BeFalse();
@@ -54,7 +54,7 @@ namespace Abrahams.SnippetLibrary.Test
             var codeSnippet = CreateCodeSnippet("Test code snippet", string.Empty);
 
             // Act 
-            var result = new CodeSnippetValidator(new LanguageValidator()).Validate(codeSnippet);
+            var result = new CodeSnippetValidator(new LanguageValidator(), new TagValidator()).Validate(codeSnippet);
 
             // Assert
             result.IsValid.Should().BeFalse();
@@ -70,12 +70,61 @@ namespace Abrahams.SnippetLibrary.Test
             codeSnippet.Language = null;
 
             // Act 
-            var result = new CodeSnippetValidator(new LanguageValidator()).Validate(codeSnippet);
+            var result = new CodeSnippetValidator(new LanguageValidator(), new TagValidator()).Validate(codeSnippet);
 
             // Assert
             result.IsValid.Should().BeFalse();
             result.Errors.Should().HaveCount(1);
             result.Errors[0].ErrorMessage.Should().Be("Please select a 'Language'.");
+        }
+
+        [Test]
+        public void Return_Validation_error_Given_a_code_snippet_with_invalid_tags()
+        {
+            // Arrange 
+            var codeSnippet = CreateCodeSnippet("Test code snippet", "var num = 42");
+            codeSnippet.Language = null;
+
+            // Act 
+            var result = new CodeSnippetValidator(new LanguageValidator(), new TagValidator()).Validate(codeSnippet);
+
+            // Assert
+            result.IsValid.Should().BeFalse();
+            result.Errors.Should().HaveCount(1);
+            result.Errors[0].ErrorMessage.Should().Be("Please select a 'Language'.");
+        }
+
+        [Test]
+        public void Return_Validation_error_Given_a_code_snippet_with_tags_that_arent_unique()
+        {
+            // TODO: Add a test to ensure tags are unique.
+            // Arrange 
+            //var codeSnippet = CreateCodeSnippet("Test code snippet", "var num = 42");
+            //codeSnippet.Language = null;
+
+            //// Act 
+            //var result = new CodeSnippetValidator(new LanguageValidator(), new TagValidator()).Validate(codeSnippet);
+
+            //// Assert
+            //result.IsValid.Should().BeFalse();
+            //result.Errors.Should().HaveCount(1);
+            //result.Errors[0].ErrorMessage.Should().Be("Please select a 'Language'.");
+        }
+
+        [Test]
+        public void Return_Validation_error_Given_a_code_snippet_with_an_invalid_tag()
+        {
+            // Arrange 
+            var codeSnippet = CreateCodeSnippet("Test code snippet", "var num = 42");
+            codeSnippet.Tags.Add(new Tag());
+
+            // Act 
+            var result = new CodeSnippetValidator(new LanguageValidator(), new TagValidator()).Validate(codeSnippet);
+
+            // Assert
+            result.IsValid.Should().BeFalse();
+            result.Errors.Should().HaveCount(1);
+            result.Errors[0].ErrorMessage.Should().Be("Please enter a 'Tag Name'.");
         }
 
         private static CodeSnippet CreateCodeSnippet(string description, string codesample) => new CodeSnippet

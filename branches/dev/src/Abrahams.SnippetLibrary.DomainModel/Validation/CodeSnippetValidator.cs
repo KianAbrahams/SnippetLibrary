@@ -4,12 +4,13 @@ namespace Abrahams.SnippetLibrary.DomainModel.Validation
 {
     public class CodeSnippetValidator : ValidatorBase<CodeSnippet>
     {
-        public CodeSnippetValidator(LanguageValidator languageValidator)
+        public CodeSnippetValidator(LanguageValidator languageValidator, TagValidator tagValidator)
         {
             this.RuleFor(x => x.Description).NotEmpty().WithMessage(RequiredErrorMessage);
             this.RuleFor(x => x.CodeSample).NotEmpty().WithMessage(RequiredErrorMessage);
             this.RuleFor(x => x.Language).NotNull().WithMessage("Please select a '{PropertyName}'.");
             this.RuleFor(x => x.Language).SetValidator(languageValidator).When(x => x.Language != null, ApplyConditionTo.CurrentValidator);
+            this.RuleForEach(x => x.Tags).SetValidator(tagValidator).When(x => x.Tags != null, ApplyConditionTo.CurrentValidator);
         }
     }
 }

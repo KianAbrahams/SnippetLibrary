@@ -1,13 +1,12 @@
-﻿using Abrahams.SnippetLibrary.DomainModel.Validation;
-using FluentValidation;
+﻿using FluentValidation;
 
-namespace Abrahams.SnippetLibrary.Test
+namespace Abrahams.SnippetLibrary.DomainModel.Validation
 {
     public class TagValidator : ValidatorBase<Tag>
     {
         public TagValidator()
         {
-            this.RuleFor(x => x.name).NotEmpty().WithMessage(RequiredErrorMessage);
+            this.RuleFor(x => x.Name).NotEmpty().WithName($"{nameof(Tag)} {nameof(Tag.Name)}").WithMessage(RequiredErrorMessage);
         }
     }
 }

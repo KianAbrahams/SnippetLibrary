@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+﻿using Abrahams.SnippetLibrary.DomainModel;
+using Abrahams.SnippetLibrary.DomainModel.Validation;
+using FluentAssertions;
 using NUnit.Framework;
 
 namespace Abrahams.SnippetLibrary.Test
@@ -19,9 +21,9 @@ namespace Abrahams.SnippetLibrary.Test
             result.IsValid.Should().BeTrue();
         }
 
-        public static Tag CreateTag(string Name) => new Tag
+        public static Tag CreateTag(string name) => new Tag
         {
-            name = Name
+            Name = name
         };
     }
 }

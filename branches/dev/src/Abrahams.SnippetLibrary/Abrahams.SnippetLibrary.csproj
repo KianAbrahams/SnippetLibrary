@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="DomainModel\CodeSnippet.cs" />
     <Compile Include="DomainModel\Language.cs" />
+    <Compile Include="DomainModel\Tag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

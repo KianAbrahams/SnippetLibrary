@@ -1,7 +1,7 @@
-﻿namespace Abrahams.SnippetLibrary.Test
+﻿namespace Abrahams.SnippetLibrary.DomainModel
 {
     public class Tag
     {
-        public string name;
+        public string Name { get; set; }
     }
 }
