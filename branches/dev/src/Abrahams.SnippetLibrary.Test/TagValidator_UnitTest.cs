@@ -6,6 +6,7 @@ using Microsoft.Practices.Unity;
 
 namespace Abrahams.SnippetLibrary.Test
 {
+    [TestFixture]
     public class TagValidator_Should : UnitTestBase
     {
         [Test]

@@ -1,5 +1,4 @@
 ﻿using Abrahams.SnippetLibrary.DomainModel;
-using Abrahams.SnippetLibrary.DomainModel.IOC;
 using Abrahams.SnippetLibrary.DomainModel.Validation;
 using FluentAssertions;
 using NUnit.Framework;
