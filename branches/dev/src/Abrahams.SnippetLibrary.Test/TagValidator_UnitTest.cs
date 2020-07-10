@@ -23,7 +23,21 @@ namespace Abrahams.SnippetLibrary.Test
             result.IsValid.Should().BeTrue();
         }
 
-        // TODO: Add additional tests for failing validation due to null tag name
+        [Test]
+        public void Return_Validation_error_Given_a_tag_with_a_zero_length_name()
+        {
+            // Arrange 
+            var tag = CreateTag(string.Empty);
+
+            // Act 
+            var result = Container.Resolve<ITagValidator>().Validate(tag);
+
+            // Assert
+            result.IsValid.Should().BeFalse();
+            result.Errors.Should().HaveCount(1);
+            result.Errors[0].ErrorMessage.Should().Be("Please enter a 'Tag Name'.");
+        }
+
         public static Tag CreateTag(string name) => new Tag
         {
             Name = name
