@@ -2,9 +2,9 @@
 
 namespace Abrahams.SnippetLibrary.DomainModel.Validation
 {
-    public class CodeSnippetValidator : ValidatorBase<CodeSnippet>
+    public class CodeSnippetValidator : ValidatorBase<CodeSnippet>, ICodeSnippetValidator
     {
-        public CodeSnippetValidator(LanguageValidator languageValidator, TagValidator tagValidator)
+        public CodeSnippetValidator(ILanguageValidator languageValidator, ITagValidator tagValidator)
         {
             this.RuleFor(x => x.Description).NotEmpty().WithMessage(RequiredErrorMessage);
             this.RuleFor(x => x.CodeSample).NotEmpty().WithMessage(RequiredErrorMessage);

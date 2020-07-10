@@ -21,6 +21,7 @@ namespace Abrahams.SnippetLibrary.Test
             result.IsValid.Should().BeTrue();
         }
 
+        // TODO: Add additional tests for failing validation due to null tag name
         public static Tag CreateTag(string name) => new Tag
         {
             Name = name

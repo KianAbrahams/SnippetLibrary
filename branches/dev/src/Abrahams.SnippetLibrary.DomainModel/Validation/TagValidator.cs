@@ -2,7 +2,7 @@
 
 namespace Abrahams.SnippetLibrary.DomainModel.Validation
 {
-    public class TagValidator : ValidatorBase<Tag>
+    public class TagValidator : ValidatorBase<Tag>, ITagValidator
     {
         public TagValidator()
         {

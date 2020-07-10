@@ -9,5 +9,6 @@ namespace Abrahams.SnippetLibrary.DomainModel
         public Language Language { get; set; }
         public List<Tag> Tags { get; set; } = new List<Tag>();
         // TODO: Switch to nullable reference types c# 8 feature
+        // TODO: switch to readonly property with behaviour methods 
     }
 }

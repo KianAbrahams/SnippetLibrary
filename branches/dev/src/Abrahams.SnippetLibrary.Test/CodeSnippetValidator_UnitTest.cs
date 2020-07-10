@@ -1,7 +1,9 @@
 ﻿using Abrahams.SnippetLibrary.DomainModel;
+using Abrahams.SnippetLibrary.DomainModel.IOC;
 using Abrahams.SnippetLibrary.DomainModel.Validation;
 using FluentAssertions;
 using NUnit.Framework;
+using Microsoft.Practices.Unity;
 
 namespace Abrahams.SnippetLibrary.Test
 {
@@ -85,8 +87,10 @@ namespace Abrahams.SnippetLibrary.Test
             var codeSnippet = CreateCodeSnippet("Test code snippet", "var num = 42");
             codeSnippet.Language = null;
 
+            var container = ContainerFactory.CreateContainer();
+
             // Act 
-            var result = new CodeSnippetValidator(new LanguageValidator(), new TagValidator()).Validate(codeSnippet);
+            var result = container.Resolve<ICodeSnippetValidator>().Validate(codeSnippet);
 
             // Assert
             result.IsValid.Should().BeFalse();
