@@ -2,10 +2,11 @@
 using Abrahams.SnippetLibrary.DomainModel.Validation;
 using FluentAssertions;
 using NUnit.Framework;
+using Microsoft.Practices.Unity;
 
 namespace Abrahams.SnippetLibrary.Test
 {
-    public class TagValidator_Should
+    public class TagValidator_Should : UnitTestBase
     {
         [Test]
         public void Return_IsValid_Given_a_valid_tag()
@@ -14,7 +15,7 @@ namespace Abrahams.SnippetLibrary.Test
             var tag = CreateTag("MVVM");
 
             // Act 
-            var result = new TagValidator().Validate(tag);
+            var result = Container.Resolve<ITagValidator>().Validate(tag);
 
             // Assert
             result.Should().NotBeNull();

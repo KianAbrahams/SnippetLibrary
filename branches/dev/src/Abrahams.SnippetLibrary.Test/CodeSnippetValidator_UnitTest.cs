@@ -8,7 +8,7 @@ using Microsoft.Practices.Unity;
 namespace Abrahams.SnippetLibrary.Test
 {
     [TestFixture]
-    public class CodeSnippetValidator_Should
+    public class CodeSnippetValidator_Should : UnitTestBase
     {
         /*
         * | CodeSnippet  |
@@ -27,7 +27,7 @@ namespace Abrahams.SnippetLibrary.Test
             var codeSnippet = CreateCodeSnippet("Test code snippet", "var num = 42");
 
             // Act 
-            var result = new CodeSnippetValidator(new LanguageValidator(), new TagValidator()).Validate(codeSnippet);
+            var result = Container.Resolve<ICodeSnippetValidator>().Validate(codeSnippet);
 
             // Assert
             result.Should().NotBeNull();
@@ -41,7 +41,7 @@ namespace Abrahams.SnippetLibrary.Test
             var codeSnippet = CreateCodeSnippet(string.Empty, "var num = 42");
 
             // Act 
-            var result = new CodeSnippetValidator(new LanguageValidator(), new TagValidator()).Validate(codeSnippet);
+            var result = Container.Resolve<ICodeSnippetValidator>().Validate(codeSnippet);
 
             // Assert
             result.IsValid.Should().BeFalse();
@@ -56,7 +56,7 @@ namespace Abrahams.SnippetLibrary.Test
             var codeSnippet = CreateCodeSnippet("Test code snippet", string.Empty);
 
             // Act 
-            var result = new CodeSnippetValidator(new LanguageValidator(), new TagValidator()).Validate(codeSnippet);
+            var result = Container.Resolve<ICodeSnippetValidator>().Validate(codeSnippet);
 
             // Assert
             result.IsValid.Should().BeFalse();
@@ -72,7 +72,7 @@ namespace Abrahams.SnippetLibrary.Test
             codeSnippet.Language = null;
 
             // Act 
-            var result = new CodeSnippetValidator(new LanguageValidator(), new TagValidator()).Validate(codeSnippet);
+            var result = Container.Resolve<ICodeSnippetValidator>().Validate(codeSnippet);
 
             // Assert
             result.IsValid.Should().BeFalse();
@@ -87,10 +87,8 @@ namespace Abrahams.SnippetLibrary.Test
             var codeSnippet = CreateCodeSnippet("Test code snippet", "var num = 42");
             codeSnippet.Language = null;
 
-            var container = ContainerFactory.CreateContainer();
-
             // Act 
-            var result = container.Resolve<ICodeSnippetValidator>().Validate(codeSnippet);
+            var result = Container.Resolve<ICodeSnippetValidator>().Validate(codeSnippet);
 
             // Assert
             result.IsValid.Should().BeFalse();
@@ -104,10 +102,9 @@ namespace Abrahams.SnippetLibrary.Test
             // TODO: Add a test to ensure tags are unique.
             // Arrange 
             //var codeSnippet = CreateCodeSnippet("Test code snippet", "var num = 42");
-            //codeSnippet.Language = null;
 
-            //// Act 
-            //var result = new CodeSnippetValidator(new LanguageValidator(), new TagValidator()).Validate(codeSnippet);
+            // Act 
+            //var result = Container.Resolve<ICodeSnippetValidator>().Validate(codeSnippet);
 
             //// Assert
             //result.IsValid.Should().BeFalse();
@@ -123,7 +120,7 @@ namespace Abrahams.SnippetLibrary.Test
             codeSnippet.Tags.Add(new Tag());
 
             // Act 
-            var result = new CodeSnippetValidator(new LanguageValidator(), new TagValidator()).Validate(codeSnippet);
+            var result = Container.Resolve<ICodeSnippetValidator>().Validate(codeSnippet);
 
             // Assert
             result.IsValid.Should().BeFalse();

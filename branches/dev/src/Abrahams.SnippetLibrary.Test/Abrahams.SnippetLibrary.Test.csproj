@@ -78,6 +78,7 @@
     <Compile Include="MainPageViewModel_UnitTest.cs" />
     <Compile Include="SnippetEditDialogueViewModel_UnitTest.cs" />
     <Compile Include="TagValidator_UnitTest.cs" />
+    <Compile Include="UnitTestBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Abrahams.SnippetLibrary.DomainModel\Abrahams.SnippetLibrary.DomainModel.csproj">

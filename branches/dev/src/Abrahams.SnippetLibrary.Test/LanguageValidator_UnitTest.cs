@@ -2,11 +2,12 @@
 using Abrahams.SnippetLibrary.DomainModel.Validation;
 using FluentAssertions;
 using NUnit.Framework;
+using Microsoft.Practices.Unity;
 
 namespace Abrahams.SnippetLibrary.Test
 {
     [TestFixture]
-    public class LanguageValidator_Should
+    public class LanguageValidator_Should : UnitTestBase
     {
         [Test]
         public void Return_IsValid_Given_a_valid_language()
@@ -15,7 +16,7 @@ namespace Abrahams.SnippetLibrary.Test
             var language = CreateLanguage(0, "C#");
 
             // Act 
-            var result = new LanguageValidator().Validate(language);
+            var result = Container.Resolve<ILanguageValidator>().Validate(language);
 
             // Assert
             result.Should().NotBeNull();
@@ -29,7 +30,7 @@ namespace Abrahams.SnippetLibrary.Test
             var language = CreateLanguage(0, string.Empty);
 
             // Act 
-            var result = new LanguageValidator().Validate(language);
+            var result = Container.Resolve<ILanguageValidator>().Validate(language);
 
             // Assert
             result.IsValid.Should().BeFalse();
@@ -44,7 +45,7 @@ namespace Abrahams.SnippetLibrary.Test
             var language = CreateLanguage(-1, "C#");
 
             // Act 
-            var result = new LanguageValidator().Validate(language);
+            var result = Container.Resolve<ILanguageValidator>().Validate(language);
 
             // Assert
             result.IsValid.Should().BeFalse();
