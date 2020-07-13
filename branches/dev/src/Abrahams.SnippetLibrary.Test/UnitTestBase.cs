@@ -5,6 +5,6 @@ namespace Abrahams.SnippetLibrary.Test
 {
     public abstract class UnitTestBase
     {
-        protected UnityContainer Container { get; } = ContainerFactory.CreateContainer();
+        protected IUnityContainer Container { get; } = ContainerFactory.CreateContainer();
     }
 }

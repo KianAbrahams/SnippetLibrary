@@ -5,7 +5,7 @@ namespace Abrahams.SnippetLibrary.DomainModel.IOC
 {
     public class ContainerFactory
     {
-        public static UnityContainer CreateContainer(UnityContainer container)
+        public static IUnityContainer CreateContainer(IUnityContainer container)
         {
             container.RegisterType<ITagValidator, TagValidator>();
             container.RegisterType<ILanguageValidator, LanguageValidator>();
@@ -13,6 +13,6 @@ namespace Abrahams.SnippetLibrary.DomainModel.IOC
             return container;
         }
 
-        public static UnityContainer CreateContainer() => CreateContainer(new UnityContainer());
+        public static IUnityContainer CreateContainer() => CreateContainer(new UnityContainer());
     }
 }
