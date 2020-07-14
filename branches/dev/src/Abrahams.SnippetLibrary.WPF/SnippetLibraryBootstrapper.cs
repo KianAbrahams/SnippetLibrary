@@ -3,6 +3,7 @@ using Microsoft.Practices.Prism.UnityExtensions;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Prism.Modularity;
 using Abrahams.SnippetLibrary.DomainModel.IOC;
+using Abrahams.SnippetLibrary.WPF.Modules.SnippetLibrary;
 
 namespace Abrahams.SnippetLibrary.WPF
 {
@@ -36,7 +37,7 @@ namespace Abrahams.SnippetLibrary.WPF
             base.ConfigureModuleCatalog();
 
             var moduleCatalog = (ModuleCatalog)this.ModuleCatalog;
-            //moduleCatalog.AddModule(typeof(OrderModule));
+            moduleCatalog.AddModule(typeof(SnippetLibraryModule));
         }
     }
 }

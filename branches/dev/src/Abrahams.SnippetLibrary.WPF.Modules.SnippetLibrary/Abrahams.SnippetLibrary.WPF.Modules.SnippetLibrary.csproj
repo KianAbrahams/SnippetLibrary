@@ -4,30 +4,26 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{89EAA444-894B-4C21-8BF6-DC7A0D3E2EFC}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <RootNamespace>Abrahams.SnippetLibrary.WPF</RootNamespace>
-    <AssemblyName>Abrahams.SnippetLibrary.WPF</AssemblyName>
+    <ProjectGuid>{08D35329-90B7-482F-AD14-09DF617192D7}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <RootNamespace>Abrahams.SnippetLibrary.WPF.Modules.SnippetLibrary</RootNamespace>
+    <AssemblyName>Abrahams.SnippetLibrary.WPF.Modules.SnippetLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -36,20 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Practices.Prism, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Microsoft.Practices.Prism">
       <HintPath>..\..\lib\Microsoft.Practices.Prism.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.Prism.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Prism.UnityExtensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Microsoft.Practices.Prism.UnityExtensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Microsoft.Practices.Unity">
       <HintPath>..\..\lib\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -68,23 +54,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Compile Include="IMainWindow.cs" />
-    <Compile Include="SnippetLibraryBootstrapper.cs" />
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
+    <Compile Include="SnippetLibraryModule.cs" />
+    <Compile Include="SnippetLibraryView.xaml.cs">
+      <DependentUpon>SnippetLibraryView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -111,28 +83,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Abrahams.SnippetLibrary.DomainModel\Abrahams.SnippetLibrary.DomainModel.csproj">
-      <Project>{1a522565-ed3f-4945-9bad-e58545c95da1}</Project>
-      <Name>Abrahams.SnippetLibrary.DomainModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Abrahams.SnippetLibrary.UI\Abrahams.SnippetLibrary.UI.csproj">
-      <Project>{19a485f3-4b2c-46bb-ad45-97776e7b4247}</Project>
-      <Name>Abrahams.SnippetLibrary.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Abrahams.SnippetLibrary.WPF.Modules.SnippetLibrary\Abrahams.SnippetLibrary.WPF.Modules.SnippetLibrary.csproj">
-      <Project>{08D35329-90B7-482F-AD14-09DF617192D7}</Project>
-      <Name>Abrahams.SnippetLibrary.WPF.Modules.SnippetLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Abrahams.SnippetLibrary\Abrahams.SnippetLibrary.csproj">
-      <Project>{a46ddf85-4e5d-4bbb-a5ef-39084096a5cd}</Project>
-      <Name>Abrahams.SnippetLibrary</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Modules\" />
+    <Page Include="SnippetLibraryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
