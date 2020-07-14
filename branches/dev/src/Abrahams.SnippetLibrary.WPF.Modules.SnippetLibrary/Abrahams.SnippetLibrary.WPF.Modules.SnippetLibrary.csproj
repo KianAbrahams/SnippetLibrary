@@ -95,5 +95,11 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Abrahams.SnippetLibrary.UI\Abrahams.SnippetLibrary.UI.csproj">
+      <Project>{19a485f3-4b2c-46bb-ad45-97776e7b4247}</Project>
+      <Name>Abrahams.SnippetLibrary.UI</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
