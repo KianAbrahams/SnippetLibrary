@@ -54,6 +54,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SnippetEditView.xaml.cs">
+      <DependentUpon>SnippetEditView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SnippetLibraryModule.cs" />
     <Compile Include="SnippetLibraryView.xaml.cs">
       <DependentUpon>SnippetLibraryView.xaml</DependentUpon>
@@ -83,6 +86,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="SnippetEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SnippetLibraryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

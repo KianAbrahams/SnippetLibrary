@@ -17,7 +17,8 @@ namespace Abrahams.SnippetLibrary.WPF.Modules.SnippetLibrary
 
         public void Initialize()
         {
-            this.regionManager.RegisterViewWithRegion("MainRegion", () => this.container.Resolve<SnippetLibraryView>());
+            // this.regionManager.RegisterViewWithRegion("MainRegion", () => this.container.Resolve<SnippetLibraryView>());
+            this.regionManager.RegisterViewWithRegion("MainRegion", () => this.container.Resolve<SnippetEditView>());
         }
     }
 }
