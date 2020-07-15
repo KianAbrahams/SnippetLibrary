@@ -16,7 +16,7 @@ namespace Abrahams.SnippetLibrary.WPF
             ContainerFactory.CreateContainer(this.Container);
 
             // Set up DI registration for types in this project
-            this.Container.RegisterType<IMainWindow, MainWindow>(new ContainerControlledLifetimeManager());
+            this.Container.RegisterType<MainWindow>(new ContainerControlledLifetimeManager());
         }
 
         protected override DependencyObject CreateShell()

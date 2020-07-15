@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Abrahams.SnippetLibrary.WPF"
-        xmlns:ui="clr-namespace:Abrahams.SnippetLibrary.UI;assembly=Abrahams.SnippetLibrary.UI"
+        xmlns:sl="clr-namespace:Abrahams.SnippetLibrary;assembly=Abrahams.SnippetLibrary"
         xmlns:prism="http://www.codeplex.com/CompositeWPF"
         mc:Ignorable="d"
         Title="Code snippet library" Height="450" Width="800">
@@ -16,9 +16,9 @@
 
         <Border Grid.Row="1" CornerRadius="4,4,4,4" BorderBrush="#193441" Background="#FCFFF5" BorderThickness="2,2,2,2" Margin="10,10,10,10" Padding="5">
             <DockPanel LastChildFill="True">
-                <ItemsControl prism:RegionManager.RegionName="{x:Static ui:RegionNames.MainRegion}" />
+                <ItemsControl prism:RegionManager.RegionName="{x:Static sl:RegionNames.MainRegion}" />
             </DockPanel>
         </Border>
-        
+
     </Grid>
 </Window>

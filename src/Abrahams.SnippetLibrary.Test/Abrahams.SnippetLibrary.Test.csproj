@@ -86,10 +86,6 @@
       <Project>{1a522565-ed3f-4945-9bad-e58545c95da1}</Project>
       <Name>Abrahams.SnippetLibrary.DomainModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Abrahams.SnippetLibrary.UI\Abrahams.SnippetLibrary.UI.csproj">
-      <Project>{19a485f3-4b2c-46bb-ad45-97776e7b4247}</Project>
-      <Name>Abrahams.SnippetLibrary.UI</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Abrahams.SnippetLibrary\Abrahams.SnippetLibrary.csproj">
       <Project>{A46DDF85-4E5D-4BBB-A5EF-39084096A5CD}</Project>
       <Name>Abrahams.SnippetLibrary</Name>

@@ -72,7 +72,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="IMainWindow.cs" />
     <Compile Include="SnippetLibraryBootstrapper.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -118,10 +117,6 @@
       <Project>{1a522565-ed3f-4945-9bad-e58545c95da1}</Project>
       <Name>Abrahams.SnippetLibrary.DomainModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Abrahams.SnippetLibrary.UI\Abrahams.SnippetLibrary.UI.csproj">
-      <Project>{19a485f3-4b2c-46bb-ad45-97776e7b4247}</Project>
-      <Name>Abrahams.SnippetLibrary.UI</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Abrahams.SnippetLibrary.WPF.Modules.SnippetLibrary\Abrahams.SnippetLibrary.WPF.Modules.SnippetLibrary.csproj">
       <Project>{08D35329-90B7-482F-AD14-09DF617192D7}</Project>
       <Name>Abrahams.SnippetLibrary.WPF.Modules.SnippetLibrary</Name>
@@ -131,8 +126,6 @@
       <Name>Abrahams.SnippetLibrary</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Modules\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
