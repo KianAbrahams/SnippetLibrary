@@ -50,7 +50,16 @@
         <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Path=Languages}" DisplayMemberPath="Name" />
 
         <Label Grid.Row="1" Grid.Column="3" Content="Description:"/>
-        <TextBox Grid.Row="3" Grid.Column="3" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+        <TextBox Grid.Row="3" Grid.Column="3" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay}">
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <AdornedElementPlaceholder x:Name="textBox"/><!-- Placeholder for the TextBox itself -->
+                        <TextBlock Margin="10" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                    </StackPanel>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+        </TextBox>
 
         <Label Grid.Row="5" Grid.Column="1" Content="Tags:"/>
         <TextBox Grid.Row="7" Grid.Column="1" />
