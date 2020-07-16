@@ -72,19 +72,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CodeSnippetValidator_UnitTest.cs" />
+    <Compile Include="DomainModel\Validation\CodeSnippetValidator_UnitTest.cs" />
     <Compile Include="IOC\ContainerFactory_UnitTest.cs" />
-    <Compile Include="LanguageValidator_UnitTest.cs" />
+    <Compile Include="DomainModel\Validation\LanguageValidator_UnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MainPageViewModel_UnitTest.cs" />
     <Compile Include="SnippetEditDialogueViewModel_UnitTest.cs" />
-    <Compile Include="TagValidator_UnitTest.cs" />
+    <Compile Include="DomainModel\Validation\TagValidator_UnitTest.cs" />
     <Compile Include="UnitTestBase.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Abrahams.SnippetLibrary.DAL\Abrahams.SnippetLibrary.DAL.csproj">
+      <Project>{39175fa9-0a45-4f3c-ae3e-8b8a787b5d9c}</Project>
+      <Name>Abrahams.SnippetLibrary.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Abrahams.SnippetLibrary.DomainModel\Abrahams.SnippetLibrary.DomainModel.csproj">
       <Project>{1a522565-ed3f-4945-9bad-e58545c95da1}</Project>
       <Name>Abrahams.SnippetLibrary.DomainModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Abrahams.SnippetLibrary.WPF.Modules.SnippetLibrary\Abrahams.SnippetLibrary.WPF.Modules.SnippetLibrary.csproj">
+      <Project>{08d35329-90b7-482f-ad14-09df617192d7}</Project>
+      <Name>Abrahams.SnippetLibrary.WPF.Modules.SnippetLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\Abrahams.SnippetLibrary\Abrahams.SnippetLibrary.csproj">
       <Project>{A46DDF85-4E5D-4BBB-A5EF-39084096A5CD}</Project>

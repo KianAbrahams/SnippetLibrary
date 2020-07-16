@@ -8,7 +8,9 @@ namespace Abrahams.SnippetLibrary.Test
 
         public UnitTestBase()
         {
+            this.Container.AddSnippetLibraryDAL();
             this.Container.AddSnippetLibraryDomainModel();
+            this.Container.AddSnippetLibraryModuleViewModel();
         }
     }
 }

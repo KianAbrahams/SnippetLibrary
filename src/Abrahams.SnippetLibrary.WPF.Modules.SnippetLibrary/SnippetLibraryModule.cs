@@ -19,8 +19,9 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary
 
         public void Initialize()
         {
+            this.container.AddSnippetLibraryModuleViewModel();
 
-            this.container.AddSnippetLibraryModuleUI();
+            container.RegisterType<SnippetEditDialog>();
 
             this.regionManager.RegisterViewWithRegion(RegionNames.MainRegion, () => this.container.Resolve<SnippetLibraryView>());
         }
