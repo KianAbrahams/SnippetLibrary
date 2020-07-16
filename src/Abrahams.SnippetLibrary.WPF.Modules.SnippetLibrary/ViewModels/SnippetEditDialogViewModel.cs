@@ -1,4 +1,5 @@
-﻿using Abrahams.SnippetLibrary.DomainModel;
+﻿using Abrahams.SnippetLibrary.DAL;
+using Abrahams.SnippetLibrary.DomainModel;
 using Abrahams.SnippetLibrary.DomainModel.Validation;
 using System;
 using System.Collections.Generic;
@@ -11,33 +12,47 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
         private readonly ILanguageValidator languageValidator;
         private readonly ITagValidator tagValidator;
 
+        private readonly ILanguageRepository languageRepository;
+
         public SnippetEditDialogViewModel(
             ICodeSnippetValidator codeSnippetValidator, 
             ILanguageValidator languageValidator, 
-            ITagValidator tagValidator)
+            ITagValidator tagValidator,
+            ILanguageRepository languageRepository)
         {
             this.tagValidator = tagValidator;
             this.languageValidator = languageValidator;
             this.codeSnippetValidator = codeSnippetValidator;
+
+            this.languageRepository = languageRepository;
         }
 
         public CodeSnippet Model { get; private set; }
-        public List<Language> Languages { get; private set; }
-        public bool IsValid 
+
+        private List<Language> languages;
+        public List<Language> Languages
         {
             get 
             {
-                return this.Validate();
-            } 
-        } 
-        
-        public void Save()
-        {
+                if (languages == null)
+                {
+                    this.languages = this.languageRepository.GetLanguageList();
+                }
+                return this.languages;
+            }
         }
-        private bool Validate()
+
+        public bool IsValid { get; private set; }
+
+        public void Save()
         {
             throw new NotImplementedException();
         }
 
+        public bool Validate()
+        {
+            // TODO: Update IsValid based on validation errors from domain validators.
+            throw new NotImplementedException();
+        }
     }
 }
