@@ -8,7 +8,7 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.Views
         public SnippetEditDialog(SnippetEditDialogViewModel snippetEditDialogViewModel)
         {
             this.InitializeComponent();
-            this.DataContext = snippetEditDialogViewModel;        
+            this.DataContext = snippetEditDialogViewModel;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
 {
-    public class SnippetLibraryViewModel : ISnippetLibraryViewModel
+    public class SnippetLibraryViewModel : ViewModelBase, ISnippetLibraryViewModel
     {
     }
 }

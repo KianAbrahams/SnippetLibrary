@@ -32,8 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentValidation, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentValidation.9.0.0\lib\net461\FluentValidation.dll</HintPath>
+    <Reference Include="FluentValidation, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.9.0.1\lib\net461\FluentValidation.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Unity">
       <HintPath>..\..\lib\Microsoft.Practices.Unity.dll</HintPath>

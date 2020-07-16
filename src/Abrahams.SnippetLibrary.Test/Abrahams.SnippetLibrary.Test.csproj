@@ -42,8 +42,8 @@
     <Reference Include="FluentAssertions, Version=5.10.3.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentAssertions.5.10.3\lib\net47\FluentAssertions.dll</HintPath>
     </Reference>
-    <Reference Include="FluentValidation, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentValidation.9.0.0\lib\net461\FluentValidation.dll</HintPath>
+    <Reference Include="FluentValidation, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.9.0.1\lib\net461\FluentValidation.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Unity">
       <HintPath>..\..\lib\Microsoft.Practices.Unity.dll</HintPath>

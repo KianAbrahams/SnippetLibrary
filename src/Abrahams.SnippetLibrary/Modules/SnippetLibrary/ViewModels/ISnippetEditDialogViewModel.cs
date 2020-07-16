@@ -1,13 +1,12 @@
 ﻿using Abrahams.SnippetLibrary.DomainModel;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
 {
-    public interface ISnippetEditDialogViewModel
+    public interface ISnippetEditDialogViewModel : IDataErrorInfo
     {
-        CodeSnippet Model { get; }
         List<Language> Languages { get; }
-        bool IsValid { get; }
         void Save();
     }
 }

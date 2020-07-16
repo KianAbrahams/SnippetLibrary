@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Abrahams.SnippetLibrary.Modules.SnippetLibrary"
         mc:Ignorable="d"
         Title="Snippet Edit Dialog" Height="450" Width="800">
     <Grid>
@@ -51,15 +50,15 @@
         <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Path=Languages}" DisplayMemberPath="Name" />
 
         <Label Grid.Row="1" Grid.Column="3" Content="Description:"/>
-        <TextBox Grid.Row="3" Grid.Column="3" />
+        <TextBox Grid.Row="3" Grid.Column="3" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
 
         <Label Grid.Row="5" Grid.Column="1" Content="Tags:"/>
         <TextBox Grid.Row="7" Grid.Column="1" />
 
         <TextBox Grid.Row="7" Grid.Column="3" />
 
-        <Label Grid.Row="9" Grid.Column="1" Content="Code Snippet:"/>
-        <RichTextBox Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="3"/>
+        <Label Grid.Row="9" Grid.Column="1" Content="Code Sample:"/>
+        <TextBox Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding CodeSample, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
 
         <StackPanel Grid.Row="13" Grid.Column="3" Height="auto" Orientation="Horizontal" HorizontalAlignment="Right" CanVerticallyScroll="True">
             <Button Content="Cancel" Margin="0, 0, 8, 0" />
