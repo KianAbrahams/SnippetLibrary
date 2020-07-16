@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{89EAA444-894B-4C21-8BF6-DC7A0D3E2EFC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Abrahams.SnippetLibrary.WPF</RootNamespace>
+    <RootNamespace>Abrahams.SnippetLibrary</RootNamespace>
     <AssemblyName>Abrahams.SnippetLibrary.WPF</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -113,6 +113,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Abrahams.SnippetLibrary.DAL\Abrahams.SnippetLibrary.DAL.csproj">
+      <Project>{39175fa9-0a45-4f3c-ae3e-8b8a787b5d9c}</Project>
+      <Name>Abrahams.SnippetLibrary.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Abrahams.SnippetLibrary.DomainModel\Abrahams.SnippetLibrary.DomainModel.csproj">
       <Project>{1a522565-ed3f-4945-9bad-e58545c95da1}</Project>
       <Name>Abrahams.SnippetLibrary.DomainModel</Name>

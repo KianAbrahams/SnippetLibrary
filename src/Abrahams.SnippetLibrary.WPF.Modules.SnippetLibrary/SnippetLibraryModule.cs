@@ -1,9 +1,10 @@
-﻿using Abrahams.SnippetLibrary.WPF.Modules.SnippetLibrary.Views;
+﻿using Abrahams.SnippetLibrary.Modules.SnippetLibrary.Views;
+using Abrahams.SnippetLibrary.Shared;
 using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Prism.Regions;
 using Microsoft.Practices.Unity;
 
-namespace Abrahams.SnippetLibrary.WPF.Modules.SnippetLibrary
+namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary
 {
     public class SnippetLibraryModule : IModule
     {
@@ -18,9 +19,10 @@ namespace Abrahams.SnippetLibrary.WPF.Modules.SnippetLibrary
 
         public void Initialize()
         {
-            this.regionManager.RegisterViewWithRegion(RegionNames.MainRegion, () => this.container.Resolve<SnippetLibraryView>());
 
-            this.container.RegisterType<SnippetEditDialog>();
+            this.container.AddSnippetLibraryModuleUI();
+
+            this.regionManager.RegisterViewWithRegion(RegionNames.MainRegion, () => this.container.Resolve<SnippetLibraryView>());
         }
     }
 }

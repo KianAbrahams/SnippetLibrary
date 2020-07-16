@@ -3,9 +3,9 @@ using Abrahams.SnippetLibrary.DomainModel.Validation;
 using System;
 using System.Collections.Generic;
 
-namespace Abrahams.SnippetLibrary.WPF.Modules.SnippetLibrary.ViewModels
+namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
 {
-    public class SnippetEditDialogViewModel
+    public class SnippetEditDialogViewModel : ISnippetEditDialogViewModel
     {
         private readonly ICodeSnippetValidator codeSnippetValidator;
         private readonly ILanguageValidator languageValidator;

@@ -1,4 +1,4 @@
-﻿namespace Abrahams.SnippetLibrary
+﻿namespace Abrahams.SnippetLibrary.Shared
 {
     public class RegionNames
     {

@@ -1,7 +1,7 @@
-﻿using Abrahams.SnippetLibrary.WPF.Modules.SnippetLibrary.ViewModels;
+﻿using Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels;
 using System.Windows;
 
-namespace Abrahams.SnippetLibrary.WPF.Modules.SnippetLibrary.Views
+namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.Views
 {
     /// <summary>
     /// Interaction logic for SnippetEditDialogue.xaml

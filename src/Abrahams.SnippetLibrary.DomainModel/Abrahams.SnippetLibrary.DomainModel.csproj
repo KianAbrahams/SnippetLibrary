@@ -52,7 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IOC\ContainerFactory.cs" />
+    <Compile Include="DependencyInjectionExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validation\CodeSnippetValidator.cs" />
     <Compile Include="Validation\LanguageValidator.cs" />

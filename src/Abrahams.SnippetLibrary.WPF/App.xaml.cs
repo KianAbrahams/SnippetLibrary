@@ -2,7 +2,7 @@
 using System.Windows;
 using Microsoft.Practices.Prism.UnityExtensions;
 
-namespace Abrahams.SnippetLibrary.WPF
+namespace Abrahams.SnippetLibrary
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -53,7 +53,7 @@ namespace Abrahams.SnippetLibrary.WPF
             
             // TODO: Exception handling
             // ExceptionPolicy.HandleException(ex, "Default Policy");
-            MessageBox.Show(WPF.Properties.Resources.UnhandledException);
+            MessageBox.Show(Abrahams.SnippetLibrary.Properties.Resources.UnhandledException);
             Environment.Exit(1);
         }
     }

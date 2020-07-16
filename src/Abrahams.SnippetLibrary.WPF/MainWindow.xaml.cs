@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Abrahams.SnippetLibrary.WPF
+namespace Abrahams.SnippetLibrary
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -10,7 +10,6 @@ namespace Abrahams.SnippetLibrary.WPF
         public MainWindow()
         {
             InitializeComponent();
-
         }
     }
 }

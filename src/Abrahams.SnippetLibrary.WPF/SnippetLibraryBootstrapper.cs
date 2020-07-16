@@ -2,10 +2,9 @@
 using Microsoft.Practices.Prism.UnityExtensions;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Prism.Modularity;
-using Abrahams.SnippetLibrary.DomainModel.IOC;
-using Abrahams.SnippetLibrary.WPF.Modules.SnippetLibrary;
+using Abrahams.SnippetLibrary.Modules.SnippetLibrary;
 
-namespace Abrahams.SnippetLibrary.WPF
+namespace Abrahams.SnippetLibrary
 {
     public class SnippetLibraryBootstrapper : UnityBootstrapper
     {
@@ -13,10 +12,14 @@ namespace Abrahams.SnippetLibrary.WPF
         {
             base.ConfigureContainer();
 
-            ContainerFactory.CreateContainer(this.Container);
+            // Setup Core DI ...
+            this.Container.AddSnippetLibraryDAL();
+            this.Container.AddSnippetLibraryDomainModel();
 
-            // Set up DI registration for types in this project
+            // Set up DI registration for types in this project ...
             this.Container.RegisterType<MainWindow>(new ContainerControlledLifetimeManager());
+
+            // Each module will then add its own registrations in the module itself.
         }
 
         protected override DependencyObject CreateShell()

@@ -1,10 +1,14 @@
-﻿using Abrahams.SnippetLibrary.DomainModel.IOC;
-using Microsoft.Practices.Unity;
+﻿using Microsoft.Practices.Unity;
 
 namespace Abrahams.SnippetLibrary.Test
 {
     public abstract class UnitTestBase
     {
-        protected IUnityContainer Container { get; } = ContainerFactory.CreateContainer();
+        protected IUnityContainer Container { get; } = new UnityContainer();
+
+        public UnitTestBase()
+        {
+            this.Container.AddSnippetLibraryDomainModel();
+        }
     }
 }
