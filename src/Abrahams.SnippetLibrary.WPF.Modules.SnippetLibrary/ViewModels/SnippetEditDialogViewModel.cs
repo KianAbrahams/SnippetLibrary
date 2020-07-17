@@ -1,26 +1,43 @@
 ﻿using Abrahams.SnippetLibrary.DAL;
 using Abrahams.SnippetLibrary.DomainModel;
 using Abrahams.SnippetLibrary.DomainModel.Validation;
+using Microsoft.Practices.Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Input;
 
 namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
 {
     public class SnippetEditDialogViewModel : ViewModelBase, ISnippetEditDialogViewModel
     {
+        public event EventHandler CloseDialog;
+        public ICommand Cancel { get; private set; }
+        public ICommand Save { get; private set; }
+
         private readonly ICodeSnippetValidator codeSnippetValidator;
         private readonly ILanguageRepository languageRepository;
 
         // TODO: this will need to be passed in from the parent screen.
         private CodeSnippet model = new CodeSnippet();
-
+        
         public SnippetEditDialogViewModel(
             ICodeSnippetValidator codeSnippetValidator,
             ILanguageRepository languageRepository)
         {
             this.codeSnippetValidator = codeSnippetValidator;
             this.languageRepository = languageRepository;
+
+            this.Cancel = new DelegateCommand(() => 
+            {
+                this.CloseDialog?.Invoke(this, new EventArgs()); 
+            });
+            
+            this.Save = new DelegateCommand(() => 
+            {
+                // TODO: valid and save code snippet
+                this.CloseDialog?.Invoke(this, new EventArgs());
+            });
         }
 
         public string Description
@@ -59,11 +76,6 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
 
                 return this.languages;
             }
-        }
-
-        public void Save()
-        {
-            throw new NotImplementedException();
         }
 
         public string this[string columnName]
