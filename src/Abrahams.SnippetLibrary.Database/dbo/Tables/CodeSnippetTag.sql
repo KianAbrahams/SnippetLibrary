@@ -1,4 +1,9 @@
-﻿CREATE TABLE [dbo].[CodeSnippetTags]
+﻿CREATE TABLE dbo.CodeSnippetTag
 (
-	[Id] INT NOT NULL PRIMARY KEY
+	CodeSnippetTagId UNIQUEIDENTIFIER NOT NULL,
+    CodeSnippetId UNIQUEIDENTIFIER NOT NULL,
+	TagId UNIQUEIDENTIFIER NOT NULL,
+	CONSTRAINT PK_CodeSnippetTag PRIMARY KEY (CodeSnippetTagId),
+    CONSTRAINT FK_CodeSnippet_CodeSnippetTag FOREIGN KEY (CodeSnippetId) REFERENCES CodeSnippet(CodeSnippetId),
+	CONSTRAINT FK_CodeSnippet_Tag FOREIGN KEY (TagId) REFERENCES Tag(TagId)
 )
