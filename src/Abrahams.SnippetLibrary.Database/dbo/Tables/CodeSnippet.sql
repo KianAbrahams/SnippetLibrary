@@ -1,7 +1,7 @@
 ﻿CREATE TABLE dbo.CodeSnippet
 (
-	CodeSnippetId UNIQUEIDENTIFIER NOT NULL,
-    LanguageId UNIQUEIDENTIFIER NOT NULL,
+	CodeSnippetId INT NOT NULL IDENTITY (1, 10),
+    LanguageId INT NOT NULL,
 	[Description] NVARCHAR(255) NOT NULL,
     CodeSample NVARCHAR(MAX) NOT NULL,
 	CONSTRAINT PK_CodeSnippet PRIMARY KEY (CodeSnippetId),

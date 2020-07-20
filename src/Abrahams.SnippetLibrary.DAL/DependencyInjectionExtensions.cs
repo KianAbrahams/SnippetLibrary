@@ -1,4 +1,5 @@
 ﻿using Abrahams.SnippetLibrary.DAL;
+using Abrahams.SnippetLibrary.DAL.SqlClient;
 
 namespace Microsoft.Practices.Unity
 {
@@ -6,7 +7,7 @@ namespace Microsoft.Practices.Unity
     {
         public static void AddSnippetLibraryDAL(this IUnityContainer container)
         {
-            container.RegisterType<ILanguageRepository, LanguageRepository>();
+            container.RegisterType<ILanguageRepository, SqlClientLanguageRepository>();
         }
     }
 }

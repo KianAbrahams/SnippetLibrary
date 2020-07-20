@@ -105,6 +105,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\Abrahams.SnippetLibrary.DAL\Abrahams.SnippetLibrary.DAL.csproj">
+      <Project>{39175fa9-0a45-4f3c-ae3e-8b8a787b5d9c}</Project>
+      <Name>Abrahams.SnippetLibrary.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Abrahams.SnippetLibrary\Abrahams.SnippetLibrary.csproj">
       <Project>{A46DDF85-4E5D-4BBB-A5EF-39084096A5CD}</Project>
       <Name>Abrahams.SnippetLibrary</Name>
