@@ -11,10 +11,6 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
 {
     public class SnippetEditDialogViewModel : ViewModelBase, ISnippetEditDialogViewModel
     {
-        public event EventHandler CloseDialog;
-        public ICommand Cancel { get; private set; }
-        public ICommand Save { get; private set; }
-
         private readonly ICodeSnippetValidator codeSnippetValidator;
         private readonly ILanguageRepository languageRepository;
 
@@ -36,15 +32,23 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
             this.Save = new DelegateCommand(() => 
             {
                 // TODO: valid and save code snippet
-                this.CloseDialog?.Invoke(this, new EventArgs());
+                // this.CloseDialog?.Invoke(this, new EventArgs());
+                var language = this.model.Language;
+                System.Diagnostics.Debugger.Break();
             });
         }
 
+        public event EventHandler CloseDialog;
+
+        public ICommand Cancel { get; private set; }
+        public ICommand Save { get; private set; }
+
         public string Description
-        {
+        { 
             get => this.model.Description;
             set
             {
+                // TODO: Call refresh validation. Also refresh validation on load90-
                 if (this.model.Description == value)
                     return;
 
@@ -52,6 +56,7 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
                 this.OnPropertyChanged();
             }
         }
+
         public string CodeSample
         {
             get => this.model.CodeSample; 
@@ -65,19 +70,32 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
             }
         }
 
-        private List<Language> languages;
-
-        public List<Language> Languages
+        public Language Language
         {
-            get
+            get => this.model.Language;
+            set
             {
-                if (languages == null)
-                    this.languages = this.languageRepository.GetLanguageList();
+                if (this.model.Language == value)
+                    return;
 
-                return this.languages;
+                this.model.Language = value;
+                this.OnPropertyChanged();
             }
         }
 
+        private List<Language> availableLanguages;
+        public List<Language> AvailableLanguages
+        {
+            get
+            {
+                if (availableLanguages == null)
+                    this.availableLanguages = this.languageRepository.GetLanguageList();
+
+                return this.availableLanguages;
+            }
+        }
+
+        #region IDataErrorInfo
         public string this[string columnName]
         {
             get
@@ -103,5 +121,6 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
                 return string.Empty;
             }
         }
+        #endregion
     }
 }

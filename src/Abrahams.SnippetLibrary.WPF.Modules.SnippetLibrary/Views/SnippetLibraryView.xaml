@@ -9,7 +9,6 @@
     <Grid>
         <StackPanel >
             <Button Content="Add Code Snippet" Click="Button_Click"/>
-            <Button Content="Get dbo" Click="Button_Click_1"/>
         </StackPanel>
     </Grid>
 </UserControl>

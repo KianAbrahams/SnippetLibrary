@@ -13,6 +13,10 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
         ICommand Cancel { get; }
         ICommand Save { get; }
 
-        List<Language> Languages { get; }
+        string Description { get; set; }
+        string CodeSample { get; set; }
+        Language Language { get; set; }
+
+        List<Language> AvailableLanguages { get; }
     }
 }

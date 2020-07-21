@@ -28,14 +28,8 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            // TODO: allow the dialog box to be shown more than once after being closed.
             snippetEditDialog.ShowDialog();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            var result = this.languageRespository.GetLanguageList();
-
-            System.Diagnostics.Debugger.Break();
         }
     }
 }

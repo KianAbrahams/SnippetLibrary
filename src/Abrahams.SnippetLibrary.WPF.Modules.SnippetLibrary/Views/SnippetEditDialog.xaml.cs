@@ -12,10 +12,5 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.Views
             snippetEditDialogViewModel.CloseDialog += (sender, e) => this.Close();
             this.DataContext = snippetEditDialogViewModel;
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

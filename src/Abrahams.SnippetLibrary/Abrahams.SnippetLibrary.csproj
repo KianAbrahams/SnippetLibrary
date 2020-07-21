@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants.cs" />
     <Compile Include="DAL\ILanguageRepository.cs" />
     <Compile Include="Modules\SnippetLibrary\ViewModels\ISnippetEditDialogViewModel.cs" />
     <Compile Include="Modules\SnippetLibrary\ViewModels\ISnippetLibraryViewModel.cs" />
