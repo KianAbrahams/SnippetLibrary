@@ -31,14 +31,19 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
             
             this.Save = new DelegateCommand(() => 
             {
-                // TODO: valid and save code snippet
-                // this.CloseDialog?.Invoke(this, new EventArgs());
-                var language = this.model.Language;
-                System.Diagnostics.Debugger.Break();
+                var result = codeSnippetValidator.Validate(model);
+
+                if (result.IsValid == false)
+                {
+                    this.ShowMsgBox.Invoke(this, "Error saving, please check all boxes have been filled in.");
+                    return;
+                }
+                // TODO: Save to the dbo.
             });
         }
 
         public event EventHandler CloseDialog;
+        public event EventHandler<string> ShowMsgBox;
 
         public ICommand Cancel { get; private set; }
         public ICommand Save { get; private set; }
@@ -122,5 +127,11 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
             }
         }
         #endregion
+    
+        private void RefreshValidation()
+        {
+            
+        }
+    
     }
 }

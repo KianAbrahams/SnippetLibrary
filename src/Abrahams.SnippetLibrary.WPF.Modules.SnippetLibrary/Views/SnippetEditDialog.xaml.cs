@@ -11,6 +11,10 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.Views
 
             snippetEditDialogViewModel.CloseDialog += (sender, e) => this.Close();
             this.DataContext = snippetEditDialogViewModel;
+            snippetEditDialogViewModel.ShowMsgBox += (sender, message) => 
+            {
+                MessageBox.Show(message);
+            };
         }
     }
 }
