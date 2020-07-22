@@ -2,6 +2,7 @@
 AS
 	SELECT cs.CodeSnippetId,
 		   cs.[Description],
+		   cs.CodeSample,
 		   l.LanguageId,
 		   l.LanguageName
 	FROM dbo.CodeSnippet cs
