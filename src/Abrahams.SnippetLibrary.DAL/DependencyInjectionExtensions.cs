@@ -8,6 +8,7 @@ namespace Microsoft.Practices.Unity
         public static void AddSnippetLibraryDAL(this IUnityContainer container)
         {
             container.RegisterType<ILanguageRepository, SqlClientLanguageRepository>();
+            container.RegisterType<ICodeSnippetRepository, SqlClientCodeSnippetRepository>();
         }
     }
 }

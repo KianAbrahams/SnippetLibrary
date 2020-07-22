@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="DependencyInjectionExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlClient\SqlClientCodeSnippetRepository.cs" />
     <Compile Include="SqlClient\SqlClientLanguageRepository.cs" />
     <Compile Include="SqlClient\SqlClientRepositoryBase.cs" />
   </ItemGroup>
