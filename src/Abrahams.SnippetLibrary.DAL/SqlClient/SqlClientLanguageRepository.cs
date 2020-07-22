@@ -14,7 +14,7 @@ namespace Abrahams.SnippetLibrary.DAL.SqlClient
             {
                 ctx.Open();
                 
-                using (var cmd = new SqlCommand("SELECT LanguageId, LanguageName FROM dbo.Language", ctx))
+                using (var cmd = new SqlCommand("dbo.USP_GetAvailableLanguages", ctx))
                 {
                     using (var dr = cmd.ExecuteReader())
                     {
