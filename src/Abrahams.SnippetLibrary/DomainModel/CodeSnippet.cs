@@ -4,6 +4,7 @@ namespace Abrahams.SnippetLibrary.DomainModel
 {
     public class CodeSnippet
     {
+        public int CodeSnippetId { get; set; } = Constants.UnknownId;
         public string Description { get; set; } = string.Empty;
         public string CodeSample { get; set; } = string.Empty;
         public Language Language { get; set; } = new Language();

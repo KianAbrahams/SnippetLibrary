@@ -5,8 +5,8 @@ namespace Abrahams.SnippetLibrary.DomainModel
 {
     public class Language : IEquatable<Language>
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public int Id { get; set; } = Constants.UnknownId;
+        public string Name { get; set; } = string.Empty;
 
         public override bool Equals(object obj)
         {
