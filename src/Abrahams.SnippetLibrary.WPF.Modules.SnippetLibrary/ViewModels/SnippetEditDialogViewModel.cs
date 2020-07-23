@@ -1,5 +1,4 @@
 ﻿using Abrahams.SnippetLibrary.DAL;
-using Abrahams.SnippetLibrary.DAL.SqlClient;
 using Abrahams.SnippetLibrary.DomainModel;
 using Abrahams.SnippetLibrary.DomainModel.Validation;
 using Microsoft.Practices.Prism.Commands;
@@ -33,25 +32,8 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
             {
                 this.CloseDialog?.Invoke(this, new EventArgs()); 
             });
-            
-            this.Save = new DelegateCommand(() => 
-            {
-                var result = this.codeSnippetValidator.Validate(this.model);
 
-                if (result.IsValid == false)
-                {
-                    // TODO: bind enabled save button to the validation result so this can never happen, replace with exception.
-                    this.ShowMsgBox.Invoke(this, "Error saving, please check all boxes have been filled in.");
-                    return;
-                }
-
-                int codeSnippetId = this.codeSnippetRepository.SaveCodeSnippet(this.model);
-
-                if (codeSnippetId != this.model.CodeSnippetId) 
-                    this.model.CodeSnippetId = codeSnippetId;
-
-                this.CloseDialog?.Invoke(this, new EventArgs());
-            });
+            this.Save = new DelegateCommand(() => this.OnSave());
         }
 
         public event EventHandler CloseDialog;
@@ -140,9 +122,23 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
         }
         #endregion
     
-        private void RefreshValidation()
+        private void OnSave()
         {
-            
+            var result = this.codeSnippetValidator.Validate(this.model);
+
+            if (result.IsValid == false)
+            {
+                // TODO: bind enabled save button to the validation result so this can never happen, replace with exception.
+                this.ShowMsgBox.Invoke(this, "Error saving, please check all boxes have been filled in.");
+                return;
+            }
+
+            int codeSnippetId = this.codeSnippetRepository.SaveCodeSnippet(this.model);
+
+            if (codeSnippetId != this.model.CodeSnippetId)
+                this.model.CodeSnippetId = codeSnippetId;
+
+            this.CloseDialog?.Invoke(this, new EventArgs());
         }
     
     }

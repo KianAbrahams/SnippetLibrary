@@ -6,9 +6,17 @@
              xmlns:local="clr-namespace:Abrahams.SnippetLibrary.Modules.SnippetLibrary"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <StackPanel >
-            <Button Content="Add Code Snippet" Click="Button_Click"/>
-        </StackPanel>
-    </Grid>
+    
+    <DockPanel LastChildFill="True">
+        
+        <Button Content="Add Code Snippet" Click="Button_Click" DockPanel.Dock="Top"/>
+        <Button Content="Search" Command="{Binding Search}" DockPanel.Dock="Top"/>
+        <DataGrid Margin="8" ItemsSource="{Binding SearchResults}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridHyperlinkColumn Header="Language" Binding="{Binding Language}" />
+                <DataGridTextColumn Header="Description"  Binding="{Binding Description}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+
 </UserControl>

@@ -1,4 +1,5 @@
 ﻿using Abrahams.SnippetLibrary.DomainModel;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -50,6 +51,37 @@ namespace Abrahams.SnippetLibrary.DAL.SqlClient
                     return (int)cmd.Parameters["@ReturnVal"].Value;
                 }
             }
+        }
+
+        public List<CodeSnippetSearchResult> SearchForCodeSnippets()
+        {
+            var result = new List<CodeSnippetSearchResult>();
+
+            using (var ctx = new SqlConnection(connectionString))
+            {
+                ctx.Open();
+
+                using (var cmd = new SqlCommand("dbo.USP_SearchForCodeSnippet", ctx))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    using (var dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            result.Add(new CodeSnippetSearchResult()
+                            {
+                                CodeSnippetId = dr.GetInt32(dr.GetOrdinal("CodeSnippetId")),
+                                Description = dr.GetString(dr.GetOrdinal("Description")),
+                                CodeSample = dr.GetString(dr.GetOrdinal("CodeSample")),
+                                Language = dr.GetString(dr.GetOrdinal("Language")),
+                                Tags = dr.GetString(dr.GetOrdinal("Tags"))
+                            });
+                        }
+                    }
+                }
+            }
+            return result;
         }
 
         private CodeSnippet FetchData(SqlDataReader dr)

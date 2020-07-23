@@ -134,6 +134,7 @@
     <Build Include="dbo\StoredProcedures\USP_SaveCodeSnippet.sql" />
     <Build Include="dbo\StoredProcedures\USP_GetCodeSnippet.sql" />
     <Build Include="dbo\StoredProcedures\USP_GetAvailableLanguages.sql" />
+    <Build Include="dbo\StoredProcedures\USP_SearchForCodeSnippet.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TestData\LanguageTestData.sql" />

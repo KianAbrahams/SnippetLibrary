@@ -11,14 +11,11 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.Views
     public partial class SnippetLibraryView : UserControl
     {
         private readonly SnippetEditDialog snippetEditDialog;
-        private readonly ILanguageRepository languageRespository;
 
         public SnippetLibraryView(
             SnippetEditDialog snippetEditDialog,
-            ISnippetLibraryViewModel snippetLibraryViewModel,
-            ILanguageRepository languageRespository)
+            ISnippetLibraryViewModel snippetLibraryViewModel)
         {
-            this.languageRespository = languageRespository;
             InitializeComponent();
 
             this.snippetEditDialog = snippetEditDialog;
