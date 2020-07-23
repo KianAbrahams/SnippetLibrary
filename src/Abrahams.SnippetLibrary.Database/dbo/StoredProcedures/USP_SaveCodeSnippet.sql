@@ -13,11 +13,15 @@ AS
 			LanguageId = @LanguageId,
 			CodeSample = @CodeSample
 		WHERE CodeSnippetId = @CodeSnippetId
+
+		RETURN @CodeSnippetId
 	END 
 	ELSE
 	BEGIN
 		INSERT INTO dbo.CodeSnippet ([Description], CodeSample, LanguageId) 
 		VALUES (@Description, @CodeSample, @LanguageId)
-	END
 
+		RETURN SCOPE_IDENTITY()
+	END
+	
 RETURN 0

@@ -28,6 +28,30 @@ namespace Abrahams.SnippetLibrary.DAL.SqlClient
             }
         }
 
+        public int SaveCodeSnippet(CodeSnippet codeSnippet)
+        {
+            using (var ctx = new SqlConnection(connectionString))
+            {
+                ctx.Open();
+
+                using (var cmd = new SqlCommand("dbo.USP_SaveCodeSnippet", ctx))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@Description", SqlDbType.NVarChar, 255).Value = codeSnippet.Description;
+                    // TODO: check how to deal with NVarChar(max) ...
+                    cmd.Parameters.Add("@CodeSample", SqlDbType.NVarChar).Value = codeSnippet.CodeSample;
+                    cmd.Parameters.Add("@LanguageId", SqlDbType.Int).Value = codeSnippet.Language.Id;
+                    cmd.Parameters.Add("@CodeSnippetId", SqlDbType.Int).Value = codeSnippet.CodeSnippetId;
+
+                    cmd.Parameters.Add(new SqlParameter("@ReturnVal", SqlDbType.Int) { Direction = ParameterDirection.ReturnValue });
+
+                    cmd.ExecuteNonQuery();
+
+                    return (int)cmd.Parameters["@ReturnVal"].Value;
+                }
+            }
+        }
+
         private CodeSnippet FetchData(SqlDataReader dr)
         {
             return new CodeSnippet()
