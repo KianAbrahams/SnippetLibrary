@@ -4,5 +4,6 @@
     {
         public int TagId { get; set; } = Constants.UnknownId;
         public string Name { get; set; } = string.Empty;
+        public const int TagMaxLength = 255;
     }
 }
