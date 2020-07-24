@@ -6,7 +6,7 @@ namespace Abrahams.SnippetLibrary.DomainModel.Validation
     {
         public CodeSnippetValidator(ILanguageValidator languageValidator, ITagValidator tagValidator)
         {
-            this.RuleFor(x => x.Description).MaximumLength(255).WithMessage(RequiredErrorMessage);
+            this.RuleFor(x => x.Description).MaximumLength(CodeSnippet.DescriptionMaxLength);
             this.RuleFor(x => x.Description).NotEmpty().WithMessage(RequiredErrorMessage);
             // TODO: decide if we want to add validation logic for the largest size for Code sample (2 GBs).
             this.RuleFor(x => x.CodeSample).NotEmpty().WithMessage(RequiredErrorMessage);
