@@ -1,4 +1,5 @@
-# YAML reference https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema
+# YAML schema reference https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema
+# YAML task reference https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/
 pr:
 - master
 - dev
@@ -8,17 +9,17 @@ pool:
 
 steps:
 
-- task: NuGetCommand@2
+- task: NuGetCommand@2 # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/package/nuget
   displayName: 'NuGet Restore'
   inputs:
     command: 'restore'
     restoreSolution: '**/KianAbrahams.SnippetLibary.sln'
     feedsToUse: 'select'
 
-- task: VSBuild@1
+- task: VSBuild@1 # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/visual-studio-build
   displayName: 'Release Build'
   inputs:
     solution: '**\KianAbrahams.SnippetLibary.sln'
-    platform: 'x64'
+    platform: 'any cpu'
     configuration: 'Release'
     msbuildArchitecture: 'x64'
