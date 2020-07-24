@@ -9,10 +9,15 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
     public class SnippetLibraryViewModel : ViewModelBase, ISnippetLibraryViewModel
     {
         private readonly ICodeSnippetRepository codeSnippetRepository;
+        private readonly ILanguageRepository languageRepository;
 
-        public SnippetLibraryViewModel(ICodeSnippetRepository codeSnippetRepository)
+        private CodeSnippet model = new CodeSnippet();
+
+        public SnippetLibraryViewModel(ICodeSnippetRepository codeSnippetRepository,
+            ILanguageRepository languageRepository)
         {
             this.codeSnippetRepository = codeSnippetRepository;
+            this.languageRepository = languageRepository;
 
             this.Search = new DelegateCommand(() => SearchResults = this.codeSnippetRepository.SearchForCodeSnippets());
         }
@@ -29,5 +34,31 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
         }
 
         public ICommand Search { get; private set; }
+
+
+        public Language Language
+        {
+            get => this.model.Language;
+            set
+            {
+                if (this.model.Language == value)
+                    return;
+
+                this.model.Language = value;
+                this.OnPropertyChanged();
+            }
+        }
+
+        private List<Language> availableLanguages;
+        public List<Language> AvailableLanguages
+        {
+            get
+            {
+                if (availableLanguages == null)
+                    this.availableLanguages = this.languageRepository.GetLanguageList();
+
+                return this.availableLanguages;
+            }
+        }
     }
 }
