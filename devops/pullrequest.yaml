@@ -1,0 +1,24 @@
+# YAML reference https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema
+pr:
+- master
+- dev
+
+pool:
+  vmImage: 'windows-2019'
+
+steps:
+
+- task: NuGetCommand@2
+  displayName: 'NuGet Restore'
+  inputs:
+    command: 'restore'
+    restoreSolution: '**/KianAbrahams.SnippetLibary.sln'
+    feedsToUse: 'select'
+
+- task: VSBuild@1
+  displayName: 'Release Build'
+  inputs:
+    solution: '**\KianAbrahams.SnippetLibary.sln'
+    platform: 'x64'
+    configuration: 'Release'
+    msbuildArchitecture: 'x64'
