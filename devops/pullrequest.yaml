@@ -23,3 +23,17 @@ steps:
     platform: 'any cpu'
     configuration: 'Release'
     msbuildArchitecture: 'x64'
+
+- task: VSTest@2
+  inputs:
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: |
+      **\Abrahams.SnippetLibrary.Test.dll
+      !**\*TestAdapter.dll
+      !**\obj\**
+    searchFolder: '$(System.DefaultWorkingDirectory)'
+    runInParallel: true
+    codeCoverageEnabled: true
+    testRunTitle: 'Unit Tests'
+    platform: 'AnyCPU'
+    configuration: 'Release'
