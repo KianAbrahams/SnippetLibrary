@@ -13,7 +13,7 @@ namespace Abrahams.SnippetLibrary.Test.Modules.SnippetLibrary.ViewModels
     public class Given_we_are_adding_a_new_snippet : UnitTestBase
     {
         [Test]
-        public void AListOfLanguages_ShouldBeProvidedToPickFrom()
+        public void AListOfAvailableLanguages_ShouldBeProvidedToPickFrom()
         {
             // Arrange
             var languageList = new List<Language>() { new Language() { Id = 10, Name = "C#" } };
@@ -24,7 +24,7 @@ namespace Abrahams.SnippetLibrary.Test.Modules.SnippetLibrary.ViewModels
             this.Container.RegisterInstance(moqLanguageRepository.Object);
 
             // Act
-            var result = this.Container.Resolve<ISnippetEditDialogViewModel>().Languages;
+            var result = this.Container.Resolve<ISnippetEditDialogViewModel>().AvailableLanguages;
 
             // Assert
             result.Should().NotBeEmpty();

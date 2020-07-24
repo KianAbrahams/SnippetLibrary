@@ -24,6 +24,21 @@ namespace Abrahams.SnippetLibrary.Test.DomainModel.Validation
         }
 
         [Test]
+        public void Return_Validation_error_Given_a_tag_that_exceeds_the_maximum_size()
+        {
+            // Arrange 
+            var tag = CreateTag(new string('*', Tag.TagMaxLength + 1));
+
+            // Act 
+            var result = Container.Resolve<ITagValidator>().Validate(tag);
+
+            // Assert
+            result.IsValid.Should().BeFalse();
+            result.Errors.Should().HaveCount(1);
+            result.Errors[0].ErrorMessage.Should().Be($"The length of 'Tag' must be {Tag.TagMaxLength} characters or fewer. You entered {Tag.TagMaxLength + 1} characters.");
+        }
+
+        [Test]
         public void Return_Validation_error_Given_a_tag_with_a_zero_length_name()
         {
             // Arrange 

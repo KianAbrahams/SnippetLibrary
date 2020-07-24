@@ -6,9 +6,93 @@
              xmlns:local="clr-namespace:Abrahams.SnippetLibrary.Modules.SnippetLibrary"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <StackPanel>
-            <Button Content="Add Code Snippet" Click="Button_Click"/>
-        </StackPanel>
-    </Grid>
+
+    <DockPanel LastChildFill="True">
+
+        <Button Content="Add Code Snippet" Click="Button_Click" DockPanel.Dock="Top"/>
+        <Grid DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <!--0-->
+                <ColumnDefinition Width="4"/>
+                <!--1-->
+                <ColumnDefinition Width="*"/>
+                <!--2-->
+                <ColumnDefinition Width="8"/>
+                <!--3-->
+                <ColumnDefinition Width="3*"/>
+                <!--4-->
+                <ColumnDefinition Width="8"/>
+                <!--5-->
+                <ColumnDefinition Width="3*"/>
+                <!--6-->
+                <ColumnDefinition Width=".5*"/>
+                <!--7-->
+                <ColumnDefinition Width="8"/>
+                <!--8-->
+                <ColumnDefinition Width="*"/>
+                <!--9-->
+                <ColumnDefinition Width="4"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <!--0-->
+                <RowDefinition Height="4" />
+                <!--1-->
+                <RowDefinition Height="*" />
+                <!--2-->
+                <RowDefinition Height="8" />
+                <!--3-->
+                <RowDefinition Height="*" />
+                <!--4-->
+                <RowDefinition Height="8" />
+                <!--5-->
+                <RowDefinition Height="*" />
+                <!--6-->
+                <RowDefinition Height="8" />
+            </Grid.RowDefinitions>
+            <Label Grid.Row="1" Grid.Column="1" Content="Code Snippet" />
+            <Label Grid.Row="3" Grid.Column="1" Content="Language:" />
+            <ComboBox Name="LangaugeCombo" Grid.Row="5" Grid.Column="1" 
+                      ItemsSource="{Binding Path=AvailableLanguages}" SelectedItem="{Binding Path=Language}"
+                      DisplayMemberPath="Name" />
+
+            <Label Grid.Row="3" Grid.Column="3" Content="Description:" />
+            <RichTextBox Name="DescriptionTextBox" Grid.Row="5" Grid.Column="3" />
+
+            <Label Grid.Row="3" Grid.Column="5" Content="Selected Tags:" IsEnabled="False"/>
+            <RichTextBox Name="TagsTextBox" Grid.Row="5" Grid.Column="5" IsEnabled="False"/>
+            <Button Content="..." Grid.Row="5" Grid.Column="6" IsEnabled="False"/>
+
+            <Button Content="Search" Command="{Binding Search}" Grid.Row="5" Grid.Column="8" />
+        </Grid>
+       
+        <Grid DockPanel.Dock="Bottom">
+            <Grid.RowDefinitions>
+                <!--0-->
+                <RowDefinition Height="10*"/>
+                <!--1-->
+                <RowDefinition Height="8"/>
+                <!--2-->
+                <RowDefinition Height="*"/>
+                <!--3-->
+                <RowDefinition Height="8"/>
+                <!--4-->
+                <RowDefinition Height="6*"/>
+                <!--5-->
+                <RowDefinition Height="4"/>
+            </Grid.RowDefinitions>
+            
+            <DataGrid Grid.Column="0" ItemsSource="{Binding SearchResults}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridHyperlinkColumn Header="Language" Binding="{Binding Language}" />
+                    <DataGridTextColumn Header="Description"  Binding="{Binding Description}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Label Grid.Row="2" Content="Code Sample:" />
+            <RichTextBox Name="CodeSampleTextBox" Grid.Row="4"  />
+            
+        </Grid>
+    </DockPanel>
+
 </UserControl>

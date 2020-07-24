@@ -37,6 +37,20 @@ namespace Abrahams.SnippetLibrary.Test.DomainModel.Validation
             result.Errors.Should().HaveCount(1);
             result.Errors[0].ErrorMessage.Should().Be("Please enter a 'Name'.");
         }
+        [Test]
+        public void Return_Validation_error_Given_a_Language_that_exceeds_the_maximum_size()
+        {
+            // Arrange 
+            var language = CreateLanguage(0, new string('*', Language.LanguageMaxLength + 1));
+
+            // Act 
+            var result = Container.Resolve<ILanguageValidator>().Validate(language);
+
+            // Assert
+            result.IsValid.Should().BeFalse();
+            result.Errors.Should().HaveCount(1);
+            result.Errors[0].ErrorMessage.Should().Be($"The length of 'Language' must be {Language.LanguageMaxLength} characters or fewer. You entered {Language.LanguageMaxLength + 1} characters.");
+        }
 
         [Test]
         public void Return_Validation_error_Given_a_language_with_a_negative_id()

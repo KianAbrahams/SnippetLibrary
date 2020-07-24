@@ -1,12 +1,23 @@
 ﻿using Abrahams.SnippetLibrary.DomainModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Windows.Input;
 
 namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
 {
     public interface ISnippetEditDialogViewModel : IDataErrorInfo
     {
-        List<Language> Languages { get; }
-        void Save();
+        event EventHandler CloseDialog;
+        event EventHandler<string> ShowMsgBox;
+
+        ICommand Cancel { get; }
+        ICommand Save { get; }
+
+        string Description { get; set; }
+        string CodeSample { get; set; }
+        Language Language { get; set; }
+
+        List<Language> AvailableLanguages { get; }
     }
 }

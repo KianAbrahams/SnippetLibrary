@@ -49,6 +49,21 @@ namespace Abrahams.SnippetLibrary.Test.DomainModel.Validation
         }
 
         [Test]
+        public void Return_Validation_error_Given_a_codes_snippet_that_exceeds_the_maximum_size()
+        {
+            // Arrange 
+            var codeSnippet = CreateCodeSnippet(new string('*', CodeSnippet.DescriptionMaxLength + 1), "var num = 42");
+
+            // Act 
+            var result = Container.Resolve<ICodeSnippetValidator>().Validate(codeSnippet);
+
+            // Assert
+            result.IsValid.Should().BeFalse();
+            result.Errors.Should().HaveCount(1);
+            result.Errors[0].ErrorMessage.Should().Be($"The length of 'Description' must be {CodeSnippet.DescriptionMaxLength} characters or fewer. You entered {CodeSnippet.DescriptionMaxLength + 1} characters.");
+        }
+        
+        [Test]
         public void Return_Validation_error_Given_a_code_snippet_with_a_zero_length_code_sample()
         {
             // Arrange 
@@ -94,6 +109,7 @@ namespace Abrahams.SnippetLibrary.Test.DomainModel.Validation
             result.Errors.Should().HaveCount(1);
             result.Errors[0].ErrorMessage.Should().Be("Please select a 'Language'.");
         }
+
 
         [Test]
         public void Return_Validation_error_Given_a_code_snippet_with_tags_that_arent_unique()

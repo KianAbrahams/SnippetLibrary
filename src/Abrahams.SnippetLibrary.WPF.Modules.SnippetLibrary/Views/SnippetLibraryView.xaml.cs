@@ -1,4 +1,5 @@
-﻿using Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels;
+﻿using Abrahams.SnippetLibrary.DAL;
+using Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -10,19 +11,21 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.Views
     public partial class SnippetLibraryView : UserControl
     {
         private readonly SnippetEditDialog snippetEditDialog;
-        private readonly SnippetLibraryViewModel snippetLibraryViewModel;
 
-        public SnippetLibraryView(SnippetEditDialog snippetEditDialog, SnippetLibraryViewModel snippetLibraryViewModel)
+        public SnippetLibraryView(
+            SnippetEditDialog snippetEditDialog,
+            ISnippetLibraryViewModel snippetLibraryViewModel)
         {
-            this.snippetEditDialog = snippetEditDialog;
-            this.snippetLibraryViewModel = snippetLibraryViewModel;
-
             InitializeComponent();
-            this.DataContext = this.snippetLibraryViewModel;
+
+            this.snippetEditDialog = snippetEditDialog;
+
+            this.DataContext = snippetLibraryViewModel;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            // TODO: allow the dialog box to be shown more than once after being closed.
             snippetEditDialog.ShowDialog();
         }
     }

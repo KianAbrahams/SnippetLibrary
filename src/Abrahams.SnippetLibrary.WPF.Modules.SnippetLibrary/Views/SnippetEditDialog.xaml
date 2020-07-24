@@ -45,9 +45,13 @@
             <!--03--><ColumnDefinition Width="*" />
             <!--04--><ColumnDefinition Width="16" />
         </Grid.ColumnDefinitions>
+        
+        <!-- TODO: update the model to bind to languageid and remove language-->
 
         <Label Grid.Row="1" Grid.Column="1" Content="Language:"/>
-        <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Path=Languages}" DisplayMemberPath="Name" />
+        <!--<ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Path=AvailableLanguages}" SelectedValue="{Binding LanguageId, Mode=TwoWay}" SelectedValuePath="LanguageId" DisplayMemberPath="Name" />-->
+        
+        <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Path=AvailableLanguages}" SelectedItem="{Binding Path=Language}" DisplayMemberPath="Name" />
 
         <Label Grid.Row="1" Grid.Column="3" Content="Description:"/>
         <TextBox Grid.Row="3" Grid.Column="3" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay}">
@@ -70,8 +74,8 @@
         <TextBox Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding CodeSample, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
 
         <StackPanel Grid.Row="13" Grid.Column="3" Height="auto" Orientation="Horizontal" HorizontalAlignment="Right" CanVerticallyScroll="True">
-            <Button Content="Cancel" Margin="0, 0, 8, 0" />
-            <Button Content="Save"/>
+            <Button Content="Cancel" Margin="0, 0, 8, 0" Command="{Binding Cancel}" />
+            <Button Content="Save" Command="{Binding Save}"/>
         </StackPanel>
     </Grid>
 </Window>

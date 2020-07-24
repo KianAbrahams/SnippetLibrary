@@ -15,6 +15,6 @@
 		},
 		"cSpell.language": "en-GB",
 		"cSpell.allowCompoundWords": true,
-		"cSpell.words": ["nunit", "svn", "Abrahams"]
+		"cSpell.words": ["nunit", "svn", "Abrahams", "msbuild"]
 	}
 }
