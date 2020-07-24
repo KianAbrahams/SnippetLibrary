@@ -4,9 +4,10 @@ using System.Collections.Generic;
 namespace Abrahams.SnippetLibrary.DomainModel
 {
     public class Language : IEquatable<Language>
-    {
+    { 
         public int Id { get; set; } = Constants.UnknownId;
         public string Name { get; set; } = string.Empty;
+        public const int LanguageMaxLength = 30;
 
         public override bool Equals(object obj)
         {
