@@ -1,5 +1,6 @@
 # YAML schema reference https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema
 # YAML task reference https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/
+trigger: none
 pr:
 - master
 - dev

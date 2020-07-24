@@ -1,4 +1,5 @@
-﻿using Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels;
+﻿using Abrahams.SnippetLibrary.DAL;
+using Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -24,6 +25,7 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            // TODO: allow the dialog box to be shown more than once after being closed.
             snippetEditDialog.ShowDialog();
         }
     }

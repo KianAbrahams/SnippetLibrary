@@ -45,9 +45,13 @@
             <!--03--><ColumnDefinition Width="*" />
             <!--04--><ColumnDefinition Width="16" />
         </Grid.ColumnDefinitions>
+        
+        <!-- TODO: update the model to bind to languageid and remove language-->
 
         <Label Grid.Row="1" Grid.Column="1" Content="Language:"/>
-        <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Path=Languages}" DisplayMemberPath="Name" />
+        <!--<ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Path=AvailableLanguages}" SelectedValue="{Binding LanguageId, Mode=TwoWay}" SelectedValuePath="LanguageId" DisplayMemberPath="Name" />-->
+        
+        <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Path=AvailableLanguages}" SelectedItem="{Binding Path=Language}" DisplayMemberPath="Name" />
 
         <Label Grid.Row="1" Grid.Column="3" Content="Description:"/>
         <TextBox Grid.Row="3" Grid.Column="3" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay}">
