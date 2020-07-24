@@ -1,0 +1,39 @@
+# YAML schema reference https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema
+# YAML task reference https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/
+pr:
+- master
+- dev
+
+pool:
+  vmImage: 'windows-2019'
+
+steps:
+
+- task: NuGetCommand@2 # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/package/nuget
+  displayName: 'NuGet Restore'
+  inputs:
+    command: 'restore'
+    restoreSolution: '**/KianAbrahams.SnippetLibary.sln'
+    feedsToUse: 'select'
+
+- task: VSBuild@1 # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/visual-studio-build
+  displayName: 'Release Build'
+  inputs:
+    solution: '**\KianAbrahams.SnippetLibary.sln'
+    platform: 'any cpu'
+    configuration: 'Release'
+    msbuildArchitecture: 'x64'
+
+- task: VSTest@2
+  inputs:
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: |
+      **\Abrahams.SnippetLibrary.Test.dll
+      !**\*TestAdapter.dll
+      !**\obj\**
+    searchFolder: '$(System.DefaultWorkingDirectory)'
+    runInParallel: true
+    codeCoverageEnabled: true
+    testRunTitle: 'Unit Tests'
+    platform: 'AnyCPU'
+    configuration: 'Release'
