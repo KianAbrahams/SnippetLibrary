@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
 {
-    public abstract class ViewModelBase : INotifyPropertyChanged
+    internal abstract class ViewModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged = null;
 

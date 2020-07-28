@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
 {
-    public class SnippetEditDialogViewModel : ViewModelBase, ISnippetEditDialogViewModel
+    internal class SnippetEditDialogViewModel : ViewModelBase, ISnippetEditDialogViewModel
     {
         private readonly ICodeSnippetValidator codeSnippetValidator;
 
@@ -33,7 +33,7 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
                 this.CloseDialog?.Invoke(this, new EventArgs()); 
             });
 
-            this.Save = new DelegateCommand(() => this.OnSave());
+            this.Save = new DelegateCommand(() => this.OnSave(this.model));
         }
 
         public event EventHandler CloseDialog;
@@ -47,7 +47,7 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
             get => this.model.Description;
             set
             {
-                // TODO: Call refresh validation. Also refresh validation on load90-
+                // TODO: Call refresh validation. Also refresh validation on load
                 if (this.model.Description == value)
                     return;
 
@@ -122,9 +122,9 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
         }
         #endregion
     
-        private void OnSave()
+        private void OnSave(CodeSnippet codeSnippet)
         {
-            var result = this.codeSnippetValidator.Validate(this.model);
+            var result = this.codeSnippetValidator.Validate(codeSnippet);
 
             if (result.IsValid == false)
             {
@@ -133,10 +133,10 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
                 return;
             }
 
-            int codeSnippetId = this.codeSnippetRepository.SaveCodeSnippet(this.model);
+            int codeSnippetId = this.codeSnippetRepository.SaveCodeSnippet(codeSnippet);
 
-            if (codeSnippetId != this.model.CodeSnippetId)
-                this.model.CodeSnippetId = codeSnippetId;
+            if (codeSnippetId != codeSnippet.CodeSnippetId)
+                codeSnippet.CodeSnippetId = codeSnippetId;
 
             this.CloseDialog?.Invoke(this, new EventArgs());
         }
