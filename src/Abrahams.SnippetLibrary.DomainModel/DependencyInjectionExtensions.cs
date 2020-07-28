@@ -9,6 +9,7 @@ namespace Microsoft.Practices.Unity
             container.RegisterType<ITagValidator, TagValidator>();
             container.RegisterType<ILanguageValidator, LanguageValidator>();
             container.RegisterType<ICodeSnippetValidator, CodeSnippetValidator>();
+            container.RegisterType<ICodeSnippetSearchCriteriaValidator, CodeSnippetSearchCriteriaValidator>();
         }
     }
 }

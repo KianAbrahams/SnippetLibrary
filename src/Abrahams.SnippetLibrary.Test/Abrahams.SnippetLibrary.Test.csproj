@@ -72,6 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainModel\Validation\CodeSnippetSearchCriteriaValidator_UnitTest.cs" />
     <Compile Include="DomainModel\Validation\CodeSnippetValidator_UnitTest.cs" />
     <Compile Include="IOC\ContainerFactory_UnitTest.cs" />
     <Compile Include="DomainModel\Validation\LanguageValidator_UnitTest.cs" />

@@ -2,7 +2,7 @@
 
 namespace Abrahams.SnippetLibrary.DomainModel.Validation
 {
-    public class LanguageValidator : ValidatorBase<Language>, ILanguageValidator
+    internal class LanguageValidator : ValidatorBase<Language>, ILanguageValidator
     {
         public LanguageValidator()
         {
