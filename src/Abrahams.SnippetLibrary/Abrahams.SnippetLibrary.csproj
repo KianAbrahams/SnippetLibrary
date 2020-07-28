@@ -48,7 +48,9 @@
     <Compile Include="Constants.cs" />
     <Compile Include="DAL\ICodeSnippetRepository.cs" />
     <Compile Include="DAL\ILanguageRepository.cs" />
+    <Compile Include="DomainModel\CodeSnippetSearchCriteria.cs" />
     <Compile Include="DomainModel\CodeSnippetSearchResult.cs" />
+    <Compile Include="DomainModel\Validation\ICodeSnippetSearchCriteriaValidator.cs" />
     <Compile Include="Modules\SnippetLibrary\ViewModels\ISnippetEditDialogViewModel.cs" />
     <Compile Include="Modules\SnippetLibrary\ViewModels\ISnippetLibraryViewModel.cs" />
     <Compile Include="Shared\RegionNames.cs" />

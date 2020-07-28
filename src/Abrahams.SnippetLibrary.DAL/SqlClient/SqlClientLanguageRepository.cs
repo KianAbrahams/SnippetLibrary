@@ -4,27 +4,27 @@ using System.Data.SqlClient;
 
 namespace Abrahams.SnippetLibrary.DAL.SqlClient
 {
-    public class SqlClientLanguageRepository : SqlClientRepositoryBase, ILanguageRepository
+    internal class SqlClientLanguageRepository : SqlClientRepositoryBase, ILanguageRepository
     {
         public List<Language> GetLanguageList()
         {
             var result = new List<Language>();
 
-            using (var ctx = new SqlConnection(connectionString))
+            using(var ctx = new SqlConnection(connectionString))
             {
                 ctx.Open();
-                
-                using (var cmd = new SqlCommand("dbo.USP_GetAvailableLanguages", ctx))
+
+                using(var cmd = new SqlCommand("dbo.USP_GetAvailableLanguages", ctx))
                 {
-                    using (var dr = cmd.ExecuteReader())
+                    using(var dr = cmd.ExecuteReader())
                     {
-                        while (dr.Read())
+                        while(dr.Read())
                         {
-                            result.Add(new Language() 
-                            { 
-                                Id = dr.GetInt32(dr.GetOrdinal("LanguageId")),
-                                Name = dr.GetString(dr.GetOrdinal("LanguageName")) 
-                            });
+                            result.Add(new Language()
+                                {
+                                    Id = dr.GetInt32(dr.GetOrdinal("LanguageId")),
+                                    Name = dr.GetString(dr.GetOrdinal("LanguageName"))
+                                });
                         }
                     }
                 }
