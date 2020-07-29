@@ -1,6 +1,7 @@
 ﻿using Abrahams.SnippetLibrary.DAL;
 using Abrahams.SnippetLibrary.DomainModel;
 using Abrahams.SnippetLibrary.DomainModel.Validation;
+using Abrahams.SnippetLibrary.Modules.SnippetLibrary.Services;
 using Microsoft.Practices.Prism.Commands;
 using System;
 using System.Collections.Generic;
@@ -16,17 +17,21 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
         private readonly ILanguageRepository languageRepository;
         private readonly ICodeSnippetRepository codeSnippetRepository;
 
+        private readonly ISnippetLibraryStateStore snippetLibraryStateStore;
+
         // TODO: this will need to be passed in from the parent screen.
         private CodeSnippet model = new CodeSnippet();
         
         public SnippetEditDialogViewModel(
             ICodeSnippetValidator codeSnippetValidator,
             ILanguageRepository languageRepository,
-            ICodeSnippetRepository codeSnippetRepository)
+            ICodeSnippetRepository codeSnippetRepository,
+            ISnippetLibraryStateStore snippetLibraryStateStore)
         {
             this.codeSnippetRepository = codeSnippetRepository;
             this.codeSnippetValidator = codeSnippetValidator;
             this.languageRepository = languageRepository;
+            this.snippetLibraryStateStore = snippetLibraryStateStore;
 
             this.Cancel = new DelegateCommand(() => 
             {
@@ -34,6 +39,8 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
             });
 
             this.Save = new DelegateCommand(() => this.OnSave(this.model));
+
+            this.snippetLibraryStateStore.EditCodeSnippet += (s, e) => this.Reset(e);
         }
 
         public event EventHandler CloseDialog;
@@ -88,7 +95,10 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
             get
             {
                 if (availableLanguages == null)
+                {
                     this.availableLanguages = this.languageRepository.GetLanguageList();
+                    this.availableLanguages.Insert(0, new Language() { Id = Constants.UnknownId, Name = "Please Select"}); 
+                }
 
                 return this.availableLanguages;
             }
@@ -140,6 +150,14 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
 
             this.CloseDialog?.Invoke(this, new EventArgs());
         }
-    
+    private void Reset(CodeSnippet codeSnippet)
+        {
+            this.model = codeSnippet;
+
+            if (this.model.CodeSnippetId == Constants.NewRecordId)
+                this.model.Language = this.availableLanguages.First();
+
+            this.OnPropertyChanged(string.Empty);
+        }
     }
 }
