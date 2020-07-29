@@ -6,6 +6,15 @@
         mc:Ignorable="d"
         Title="Snippet Edit Dialog" Height="450" Width="800">
     <Grid>
+        <!--TODO: Give names to all the definitions-->
+        <Grid.ColumnDefinitions>
+            <!--00--><ColumnDefinition Width="16" />
+            <!--01--><ColumnDefinition Width=".25*" />
+            <!--02--><ColumnDefinition Width="8" />
+            <!--03--><ColumnDefinition Width="*" />
+            <!--04--><ColumnDefinition Width="16" />
+        </Grid.ColumnDefinitions>
+
         <Grid.RowDefinitions>
             <!--00-->
             <RowDefinition Height="16"/>
@@ -38,14 +47,7 @@
             <!--14-->
             <RowDefinition Height="16"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <!--00--><ColumnDefinition Width="16" />
-            <!--01--><ColumnDefinition Width=".25*" />
-            <!--02--><ColumnDefinition Width="8" />
-            <!--03--><ColumnDefinition Width="*" />
-            <!--04--><ColumnDefinition Width="16" />
-        </Grid.ColumnDefinitions>
-        
+
         <!-- TODO: update the model to bind to languageid and remove language-->
 
         <Label Grid.Row="1" Grid.Column="1" Content="Language:"/>

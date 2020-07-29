@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="DependencyInjectionExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validation\CodeSnippetSearchCriteriaValidator.cs" />
     <Compile Include="Validation\CodeSnippetValidator.cs" />
     <Compile Include="Validation\LanguageValidator.cs" />
     <Compile Include="Validation\TagValidator.cs" />

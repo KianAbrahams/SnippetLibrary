@@ -9,7 +9,7 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.Views
         {
             this.InitializeComponent();
 
-            snippetEditDialogViewModel.CloseDialog += (sender, e) => this.Close();
+            snippetEditDialogViewModel.CloseDialog += (sender, e) => this.Hide();
             this.DataContext = snippetEditDialogViewModel;
             snippetEditDialogViewModel.ShowMsgBox += (sender, message) => 
             {

@@ -7,7 +7,6 @@ namespace Abrahams.SnippetLibrary.DAL
     {
         CodeSnippet GetCodeSnippet(int codeSnippet);
         int SaveCodeSnippet(CodeSnippet model);
-        List<CodeSnippetSearchResult> SearchForCodeSnippets();
-        // TODO: Save code snippet
+        List<CodeSnippetSearchResult> SearchForCodeSnippets(CodeSnippetSearchCriteria codeSnippetSearchCriteria);
     }
 }

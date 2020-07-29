@@ -9,21 +9,21 @@ namespace Abrahams.SnippetLibrary.DAL.SqlClient
     {
         public CodeSnippet GetCodeSnippet(int codeSnippet)
         {
-            using (var ctx = new SqlConnection(connectionString))
+            using(var ctx = new SqlConnection(connectionString))
             {
                 ctx.Open();
 
-                using (var cmd = new SqlCommand("dbo.USP_GetCodeSnippet", ctx))
+                using(var cmd = new SqlCommand("dbo.USP_GetCodeSnippet", ctx))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@CodeSnippetId", SqlDbType.Int).Value = codeSnippet;
 
-                    using (var dr = cmd.ExecuteReader())
+                    using(var dr = cmd.ExecuteReader())
                     {
-                        if (dr.Read() == false)
+                        if(dr.Read() == false)
                             return null;
 
-                        return FetchData(dr);
+                        return this.FetchData(dr);
                     }
                 }
             }
@@ -31,11 +31,11 @@ namespace Abrahams.SnippetLibrary.DAL.SqlClient
 
         public int SaveCodeSnippet(CodeSnippet codeSnippet)
         {
-            using (var ctx = new SqlConnection(connectionString))
+            using(var ctx = new SqlConnection(connectionString))
             {
                 ctx.Open();
 
-                using (var cmd = new SqlCommand("dbo.USP_SaveCodeSnippet", ctx))
+                using(var cmd = new SqlCommand("dbo.USP_SaveCodeSnippet", ctx))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@Description", SqlDbType.NVarChar, 255).Value = codeSnippet.Description;
@@ -44,7 +44,9 @@ namespace Abrahams.SnippetLibrary.DAL.SqlClient
                     cmd.Parameters.Add("@LanguageId", SqlDbType.Int).Value = codeSnippet.Language.Id;
                     cmd.Parameters.Add("@CodeSnippetId", SqlDbType.Int).Value = codeSnippet.CodeSnippetId;
 
-                    cmd.Parameters.Add(new SqlParameter("@ReturnVal", SqlDbType.Int) { Direction = ParameterDirection.ReturnValue });
+                    cmd.Parameters
+                        .Add(new SqlParameter("@ReturnVal", SqlDbType.Int)
+                        { Direction = ParameterDirection.ReturnValue });
 
                     cmd.ExecuteNonQuery();
 
@@ -53,30 +55,39 @@ namespace Abrahams.SnippetLibrary.DAL.SqlClient
             }
         }
 
-        public List<CodeSnippetSearchResult> SearchForCodeSnippets()
+        public List<CodeSnippetSearchResult> SearchForCodeSnippets(CodeSnippetSearchCriteria codeSnippetSearchCriteria)
         {
             var result = new List<CodeSnippetSearchResult>();
 
-            using (var ctx = new SqlConnection(connectionString))
+            using(var ctx = new SqlConnection(connectionString))
             {
                 ctx.Open();
 
-                using (var cmd = new SqlCommand("dbo.USP_SearchForCodeSnippet", ctx))
+                using(var cmd = new SqlCommand("dbo.USP_SearchForCodeSnippet", ctx))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
+                    if (codeSnippetSearchCriteria.Description != string.Empty)
+                        cmd.Parameters.Add("@Description", SqlDbType.NVarChar, 255).Value = codeSnippetSearchCriteria.Description;
+                    
+                    if (codeSnippetSearchCriteria.CodeSample != string.Empty)
+                        cmd.Parameters.Add("@CodeSample", SqlDbType.NVarChar).Value = codeSnippetSearchCriteria.CodeSample;
+
+                    if(codeSnippetSearchCriteria.Language.Id != Constants.UnknownId)
+                        cmd.Parameters.Add("@LanguageId", SqlDbType.Int).Value = codeSnippetSearchCriteria.Language.Id;
+
                     using (var dr = cmd.ExecuteReader())
                     {
-                        while (dr.Read())
+                        while(dr.Read())
                         {
                             result.Add(new CodeSnippetSearchResult()
-                            {
-                                CodeSnippetId = dr.GetInt32(dr.GetOrdinal("CodeSnippetId")),
-                                Description = dr.GetString(dr.GetOrdinal("Description")),
-                                CodeSample = dr.GetString(dr.GetOrdinal("CodeSample")),
-                                Language = dr.GetString(dr.GetOrdinal("Language")),
-                                Tags = dr.GetString(dr.GetOrdinal("Tags"))
-                            });
+                                {
+                                    CodeSnippetId = dr.GetInt32(dr.GetOrdinal("CodeSnippetId")),
+                                    Description = dr.GetString(dr.GetOrdinal("Description")),
+                                    CodeSample = dr.GetString(dr.GetOrdinal("CodeSample")),
+                                    Language = dr.GetString(dr.GetOrdinal("Language")),
+                                    Tags = dr.GetString(dr.GetOrdinal("Tags"))
+                                });
                         }
                     }
                 }
@@ -91,11 +102,12 @@ namespace Abrahams.SnippetLibrary.DAL.SqlClient
                 CodeSnippetId = dr.GetInt32(dr.GetOrdinal("CodeSnippetId")),
                 Description = dr.GetString(dr.GetOrdinal("Description")),
                 CodeSample = dr.GetString(dr.GetOrdinal("CodeSample")),
-                Language = new Language()
-                {
-                    Id = dr.GetInt32(dr.GetOrdinal("LanguageId")),
-                    Name = dr.GetString(dr.GetOrdinal("LanguageName"))
-                }
+                Language =
+                new Language()
+                    {
+                        Id = dr.GetInt32(dr.GetOrdinal("LanguageId")),
+                        Name = dr.GetString(dr.GetOrdinal("LanguageName"))
+                    }
                 // TODO: implement Tag
             };
         }
