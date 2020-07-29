@@ -1,40 +1,57 @@
 # YAML schema reference https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema
 # YAML task reference https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/
-trigger: none
+name: $(BuildID)
+
 pr:
-- master
-- dev
+  autoCancel: true
+  branches:
+    include:
+    - dev
+    - master
+  paths:
+    exclude:
+    - ./devops
+    - ./docs
 
-pool:
-  vmImage: 'windows-2019'
+trigger: none
 
-steps:
+resources:
+- repo: self
+  clean: true
 
-- task: NuGetCommand@2 # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/package/nuget
-  displayName: 'NuGet Restore'
-  inputs:
-    command: 'restore'
-    restoreSolution: '**/KianAbrahams.SnippetLibary.sln'
-    feedsToUse: 'select'
+stages:
+- stage: PRBuild
+  jobs:
+  - job: PRBuild
+    pool: # https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted
+      vmImage: 'windows-latest'
 
-- task: VSBuild@1 # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/visual-studio-build
-  displayName: 'Release Build'
-  inputs:
-    solution: '**\KianAbrahams.SnippetLibary.sln'
-    platform: 'any cpu'
-    configuration: 'Release'
-    msbuildArchitecture: 'x64'
+    steps:
+    - task: NuGetCommand@2 # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/package/nuget
+      displayName: 'NuGet Restore'
+      inputs:
+        command: 'restore'
+        restoreSolution: '**/KianAbrahams.SnippetLibary.sln'
+        feedsToUse: 'select'
 
-- task: VSTest@2
-  inputs:
-    testSelector: 'testAssemblies'
-    testAssemblyVer2: |
-      **\Abrahams.SnippetLibrary.Test.dll
-      !**\*TestAdapter.dll
-      !**\obj\**
-    searchFolder: '$(System.DefaultWorkingDirectory)'
-    runInParallel: true
-    codeCoverageEnabled: true
-    testRunTitle: 'Unit Tests'
-    platform: 'AnyCPU'
-    configuration: 'Release'
+    - task: VSBuild@1 # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/visual-studio-build
+      displayName: 'Release Build'
+      inputs:
+        solution: '**\KianAbrahams.SnippetLibary.sln'
+        platform: 'any cpu'
+        configuration: 'Release'
+        msbuildArchitecture: 'x64'
+
+    - task: VSTest@2
+      inputs:
+        testSelector: 'testAssemblies'
+        testAssemblyVer2: |
+          **\Abrahams.SnippetLibrary.Test.dll
+          !**\*TestAdapter.dll
+          !**\obj\**
+        searchFolder: '$(System.DefaultWorkingDirectory)'
+        runInParallel: true
+        codeCoverageEnabled: true
+        testRunTitle: 'Unit Tests'
+        platform: 'AnyCPU'
+        configuration: 'Release'
