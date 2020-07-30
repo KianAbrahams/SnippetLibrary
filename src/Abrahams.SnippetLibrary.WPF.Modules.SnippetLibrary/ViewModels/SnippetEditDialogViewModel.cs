@@ -139,7 +139,7 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
             if (result.IsValid == false)
             {
                 // TODO: bind enabled save button to the validation result so this can never happen, replace with exception.
-                this.ShowMsgBox.Invoke(this, "Error saving, please check all boxes have been filled in.");
+                this.ShowMsgBox.Invoke(this, Constants.SnippetEditDialogViewModel.SaveErrorMessage);
                 return;
             }
 
@@ -150,12 +150,13 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
 
             this.CloseDialog?.Invoke(this, new EventArgs());
         }
-    private void Reset(CodeSnippet codeSnippet)
+
+        private void Reset(CodeSnippet codeSnippet)
         {
             this.model = codeSnippet;
 
             if (this.model.CodeSnippetId == Constants.NewRecordId)
-                this.model.Language = this.availableLanguages.First();
+                this.model.Language = this.AvailableLanguages.First();
 
             this.OnPropertyChanged(string.Empty);
         }
