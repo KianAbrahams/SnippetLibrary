@@ -1,6 +1,7 @@
 ﻿using Abrahams.SnippetLibrary.DAL;
 using Abrahams.SnippetLibrary.DomainModel;
 using Abrahams.SnippetLibrary.DomainModel.Validation;
+using Abrahams.SnippetLibrary.Modules.SnippetLibrary.Services;
 using Microsoft.Practices.Prism.Commands;
 using System;
 using System.Collections.Generic;
@@ -15,17 +16,21 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
         private readonly ICodeSnippetRepository codeSnippetRepository;
         private readonly ILanguageRepository languageRepository;
 
+        private readonly ISnippetLibraryStateStore snippetLibraryStateStore;
+
         private CodeSnippet model = new CodeSnippet();
         private CodeSnippetSearchCriteria searchCriteria = new CodeSnippetSearchCriteria();
 
         public SnippetLibraryViewModel(
             ICodeSnippetSearchCriteriaValidator codeSnippetSearchCriteriaValidator,
             ICodeSnippetRepository codeSnippetRepository,
-            ILanguageRepository languageRepository)
+            ILanguageRepository languageRepository,
+            ISnippetLibraryStateStore snippetLibraryStateStore)
         {
             this.codeSnippetRepository = codeSnippetRepository;
             this.languageRepository = languageRepository;
             this.codeSnippetSearchCriteriaValidator = codeSnippetSearchCriteriaValidator;
+            this.snippetLibraryStateStore = snippetLibraryStateStore;
 
             this.Search = new DelegateCommand(this.OnSearch);
             this.AddCodeSnippet = new DelegateCommand(this.OnAddCodeSnippet);
@@ -91,13 +96,14 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
 
         private void OnAddCodeSnippet()
         {
-            // TODO: Send edit message passing a new code snippet as the argument.
+            this.snippetLibraryStateStore.OnEditCodeSnippet(new CodeSnippet());
             this.ShowAddDialog?.Invoke(this, new EventArgs());
         }
 
         private void OnEditCodeSnippet()
         {
             // TODO: Send edit message passing the selected code snippet as the argument.
+            //this.snippetLibraryStateStore.OnEditCodeSnippet());
             this.ShowAddDialog?.Invoke(this, new EventArgs());
         }
     }
