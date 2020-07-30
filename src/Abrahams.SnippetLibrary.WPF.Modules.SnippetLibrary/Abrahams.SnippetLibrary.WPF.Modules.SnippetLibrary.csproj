@@ -59,9 +59,13 @@
   <ItemGroup>
     <Compile Include="DependencyInjectionExtensions.cs" />
     <Compile Include="Services\SnippetLibraryStateStore.cs" />
+    <Compile Include="ViewModels\AddTagPageViewModel.cs" />
     <Compile Include="ViewModels\SnippetEditDialogViewModel.cs" />
     <Compile Include="ViewModels\SnippetLibraryViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\TagPickerDialog.xaml.cs">
+      <DependentUpon>TagPickerDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SnippetEditDialog.xaml.cs">
       <DependentUpon>SnippetEditDialog.xaml</DependentUpon>
     </Compile>
@@ -95,6 +99,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\TagPickerDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\SnippetEditDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

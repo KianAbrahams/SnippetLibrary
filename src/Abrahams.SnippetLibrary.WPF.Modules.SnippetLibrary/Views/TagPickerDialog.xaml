@@ -1,0 +1,48 @@
+﻿<Window x:Class="Abrahams.SnippetLibrary.Modules.SnippetLibrary.Views.TagPickerDialog"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Abrahams.SnippetLibrary.Modules.SnippetLibrary.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="500"
+      Title="Add Tags">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="16"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="16"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="16"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="4"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="16"/>
+        </Grid.RowDefinitions>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Search, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay}"/>
+        <Button Grid.Row="1" Grid.Column="2" Width="25" Content="+"/>
+
+        <!--remove textbox as its just a placeholder-->
+        <!--<RichTextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3"/>-->
+        <ListBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" ItemsSource="{Binding TheList}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <CheckBox Content="{Binding Name}" IsChecked="{Binding IsChecked}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Cancel" Command="{Binding Cancel}" Margin="0, 0, 8, 0"  />
+            <Button Content="Ok" Command="{Binding Ok}"/>
+        </StackPanel>
+    </Grid>
+</Window>
