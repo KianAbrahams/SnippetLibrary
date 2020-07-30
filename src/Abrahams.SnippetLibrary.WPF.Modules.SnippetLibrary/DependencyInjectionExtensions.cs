@@ -1,4 +1,5 @@
-﻿using Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels;
+﻿using Abrahams.SnippetLibrary.Modules.SnippetLibrary.Services;
+using Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels;
 
 namespace Microsoft.Practices.Unity
 {
@@ -6,9 +7,11 @@ namespace Microsoft.Practices.Unity
     {
         public static void AddSnippetLibraryModuleViewModel(this IUnityContainer container)
         {
-            // TODO: Implement messaging between the two view models as a singleton shared app service.
-            container.RegisterType<ISnippetLibraryViewModel, SnippetLibraryViewModel>();
+            container.RegisterType<ISnippetLibraryStateStore, SnippetLibraryStateStore>(new ContainerControlledLifetimeManager());
+
+            container.RegisterType<IAddTagPageViewModel, AddTagPageViewModel>();
             container.RegisterType<ISnippetEditDialogViewModel, SnippetEditDialogViewModel>();
+            container.RegisterType<ISnippetLibraryViewModel, SnippetLibraryViewModel>();
         }
     }
 }

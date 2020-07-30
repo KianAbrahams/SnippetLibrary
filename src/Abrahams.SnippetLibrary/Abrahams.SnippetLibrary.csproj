@@ -51,6 +51,7 @@
     <Compile Include="DomainModel\CodeSnippetSearchCriteria.cs" />
     <Compile Include="DomainModel\CodeSnippetSearchResult.cs" />
     <Compile Include="DomainModel\Validation\ICodeSnippetSearchCriteriaValidator.cs" />
+    <Compile Include="Modules\SnippetLibrary\ViewModels\IAddTagPageViewModel.cs" />
     <Compile Include="Modules\SnippetLibrary\ViewModels\ISnippetEditDialogViewModel.cs" />
     <Compile Include="Modules\SnippetLibrary\ViewModels\ISnippetLibraryViewModel.cs" />
     <Compile Include="Shared\RegionNames.cs" />
