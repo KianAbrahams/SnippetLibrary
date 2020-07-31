@@ -34,6 +34,7 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
 
             this.Search = new DelegateCommand(this.OnSearch);
             this.AddCodeSnippet = new DelegateCommand(this.OnAddCodeSnippet);
+            this.AddTag = new DelegateCommand(this.OnAddTag);
             this.EditCodeSnippet = new DelegateCommand(this.OnEditCodeSnippet);
         }
 
@@ -50,10 +51,12 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
 
         public ICommand Search { get; private set; }
         public ICommand AddCodeSnippet { get; private set; }
+        public ICommand AddTag { get; private set; }
         public ICommand EditCodeSnippet { get; private set; }
 
         public event EventHandler<string> ShowMsgBox;
         public event EventHandler ShowAddDialog;
+        public event EventHandler ShowAddTagDialog;
 
         public Language Language
         {
@@ -98,6 +101,12 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
         {
             this.snippetLibraryStateStore.OnEditCodeSnippet(new CodeSnippet());
             this.ShowAddDialog?.Invoke(this, new EventArgs());
+        }
+
+        private void OnAddTag()
+        {
+            this.snippetLibraryStateStore.OnAddTag(new CodeSnippet());
+            this.ShowAddTagDialog?.Invoke(this, new EventArgs());
         }
 
         private void OnEditCodeSnippet()

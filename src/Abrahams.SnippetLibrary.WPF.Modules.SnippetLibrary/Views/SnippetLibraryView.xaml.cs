@@ -6,7 +6,7 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.Views
 {
     public partial class SnippetLibraryView : UserControl
     {
-        public SnippetLibraryView(SnippetEditDialog snippetEditDialog, ISnippetLibraryViewModel snippetLibraryViewModel)
+        public SnippetLibraryView(SnippetEditDialog snippetEditDialog, TagPickerDialog tagPickerDialog, ISnippetLibraryViewModel snippetLibraryViewModel)
         {
             InitializeComponent();
 
@@ -14,6 +14,7 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.Views
 
             snippetLibraryViewModel.ShowMsgBox += (sender, message) => MessageBox.Show(message);
             snippetLibraryViewModel.ShowAddDialog += (sender, message) => snippetEditDialog.ShowDialog();
+            snippetLibraryViewModel.ShowAddTagDialog += (sender, message) => tagPickerDialog.ShowDialog();
         }
     }
 }

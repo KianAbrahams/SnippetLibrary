@@ -11,9 +11,11 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
 
         event EventHandler<string> ShowMsgBox;
         event EventHandler ShowAddDialog;
+        event EventHandler ShowAddTagDialog;
 
         ICommand Search { get; }
         ICommand AddCodeSnippet { get; }
+        ICommand AddTag { get; }
         ICommand EditCodeSnippet { get; }
     }
 }

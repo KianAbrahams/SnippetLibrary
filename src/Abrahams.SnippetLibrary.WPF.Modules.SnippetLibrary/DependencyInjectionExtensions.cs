@@ -9,7 +9,7 @@ namespace Microsoft.Practices.Unity
         {
             container.RegisterType<ISnippetLibraryStateStore, SnippetLibraryStateStore>(new ContainerControlledLifetimeManager());
 
-            container.RegisterType<IAddTagPageViewModel, AddTagPageViewModel>();
+            container.RegisterType<ITagPickerDialogViewModel, TagPickerDialogViewModel>();
             container.RegisterType<ISnippetEditDialogViewModel, SnippetEditDialogViewModel>();
             container.RegisterType<ISnippetLibraryViewModel, SnippetLibraryViewModel>();
         }

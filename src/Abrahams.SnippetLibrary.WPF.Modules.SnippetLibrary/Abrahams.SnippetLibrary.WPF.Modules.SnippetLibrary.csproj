@@ -59,7 +59,7 @@
   <ItemGroup>
     <Compile Include="DependencyInjectionExtensions.cs" />
     <Compile Include="Services\SnippetLibraryStateStore.cs" />
-    <Compile Include="ViewModels\AddTagPageViewModel.cs" />
+    <Compile Include="ViewModels\TagPickerDialogViewModel.cs" />
     <Compile Include="ViewModels\SnippetEditDialogViewModel.cs" />
     <Compile Include="ViewModels\SnippetLibraryViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />

@@ -62,7 +62,7 @@
                 <Label Grid.Row="0" Grid.Column="4" Content="Selected Tags:" IsEnabled="False"/>
 
                 <RichTextBox Grid.Row="2" Grid.Column="4" Width="125" Name="TagsTextBox" IsEnabled="False"/>
-                <Button Grid.Row="2" Grid.Column="5" Width="25" Content="..." IsEnabled="False"/>
+                <Button Grid.Row="2" Grid.Column="5" Width="25" Content="..." Command="{Binding AddTag}"/>
 
                 <Button Grid.Row="2" Grid.Column="7" Content="Search" Command="{Binding Search}"/>
             </Grid>
