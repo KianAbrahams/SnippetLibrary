@@ -3,6 +3,8 @@ using Abrahams.SnippetLibrary.DomainModel;
 using Abrahams.SnippetLibrary.DomainModel.Validation;
 using Microsoft.Practices.Prism.Commands;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Input;
 
 namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
@@ -35,20 +37,50 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
         public ICommand Cancel { get; private set; }
         public ICommand Save { get; private set; }
 
-        //public string Search
-        //{
-        //    get => this.Search;
-        //    set
-        //    {
-        //        // TODO: Call refresh validation. Also refresh validation on load
-        //        if (this.Search == value)
-        //            return;
+        private string _search;
+        public string Search
+        {
+            get => _search;
+            set
+            {
+                // TODO: Call refresh validation. Also refresh validation on load
+                if (_search == value)
+                    return;
 
-        //        this.Search = value;
-        //        this.OnPropertyChanged();
-        //    }
-        //}
+                _search = value;
+                this.OnPropertyChanged();
+            }
+        }
 
+        public List<Tag> TheList
+        {
+            get
+            {
+                this.OnPropertyChanged();
+                return this.tag.theList;
+            }
+        }
+        public List<Tag> AddToTheList
+        {
+            get
+            {
+                this.OnPropertyChanged();
+                return this.tag.theList;
+            }
+            set
+            {
+
+                bool isContained = this.tag.theList.Any(x => value.Contains(x));
+
+                if (isContained == true)
+                {
+                    return;
+                }
+                var listmax = this.TheList.Count;
+
+                this.OnPropertyChanged();
+            }
+        }   
 
         private void OnSave(Tag tag)
         {

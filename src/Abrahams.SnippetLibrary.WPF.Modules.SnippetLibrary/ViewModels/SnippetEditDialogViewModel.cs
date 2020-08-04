@@ -63,6 +63,22 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
             }
         }
 
+        private bool _saveButtonOn = false;
+        public bool SaveButtonOn
+        {
+            get => _saveButtonOn;
+            set
+            {
+                if (Description == null && CodeSample == null && Language == null)
+                {
+                    _saveButtonOn = true;
+                    return;
+                }
+                _saveButtonOn = true;
+                this.OnPropertyChanged();
+            }
+        }
+
         public string CodeSample
         {
             get => this.model.CodeSample; 

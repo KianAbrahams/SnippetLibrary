@@ -131,7 +131,6 @@ namespace Abrahams.SnippetLibrary.DAL.SqlClient
                         Id = dr.GetInt32(dr.GetOrdinal("LanguageId")),
                         Name = dr.GetString(dr.GetOrdinal("LanguageName"))
                     }
-                // TODO: implement Tag
             };
         }
     }

@@ -10,10 +10,7 @@ using Abrahams.SnippetLibrary.Modules.SnippetLibrary.Services;
 
 namespace Abrahams.SnippetLibrary.Test.Modules.SnippetLibrary.ViewModels
 {
-    /* When cancel is clicked the screen closes
-     * When save is clicked for a valid code snippet it should be saved and the screen closes
-     * When save is clicked for an invalid code snippet it should alert the user
-     * Given we are editing an existing code snippet, its data should appear when the form loads
+    /* Given we are editing an existing code snippet, its data should appear when the form loads
      * 
      * For each field the data should be validated on a field by field basis and validation messages shown.
      */
@@ -67,7 +64,7 @@ namespace Abrahams.SnippetLibrary.Test.Modules.SnippetLibrary.ViewModels
         }
     }
 
-    [TestFixture]
+[TestFixture]
     public class Given_a_newly_created_valid_code_snippet : UnitTestBase
     {
         [Test]
@@ -151,6 +148,26 @@ namespace Abrahams.SnippetLibrary.Test.Modules.SnippetLibrary.ViewModels
             messageRecieved.Should().BeEmpty();
             isCloseDialogFired.Should().BeTrue();
             mockCodeSnippetRepository.Verify(x => x.SaveCodeSnippet(codeSnippet), Times.Once);
+        }
+    }
+
+    [TestFixture]
+    public class Given_an_user_clicks_the_cancel_button : UnitTestBase
+    {
+        [Test]
+        public void the_screen_show_close()
+        {
+            // Arrange
+            var isCloseDialogFired = false;
+
+            var snippetEditDialogViewModel = this.Container.Resolve<ISnippetEditDialogViewModel>();
+            snippetEditDialogViewModel.CloseDialog += (sender, e) => isCloseDialogFired = true;
+
+            // Act
+            snippetEditDialogViewModel.Cancel.Execute(null);
+
+            // Assert
+            isCloseDialogFired.Should().BeTrue();
         }
     }
 }
