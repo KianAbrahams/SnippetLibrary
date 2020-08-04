@@ -255,6 +255,7 @@ ServiceFabricBackup/
 *.mdf
 *.ldf
 *.ndf
+*.bak
 
 # Business Intelligence projects
 *.rdl.data
@@ -351,3 +352,4 @@ MigrationBackup/
 
 # Code Rush
 .cr/
+SnippetLibrary.bak
