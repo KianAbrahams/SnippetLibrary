@@ -48,12 +48,15 @@
     <Compile Include="Constants.cs" />
     <Compile Include="DAL\ICodeSnippetRepository.cs" />
     <Compile Include="DAL\ILanguageRepository.cs" />
+    <Compile Include="DAL\ITagRepository.cs" />
     <Compile Include="DomainModel\CodeSnippetSearchCriteria.cs" />
     <Compile Include="DomainModel\CodeSnippetSearchResult.cs" />
     <Compile Include="DomainModel\Validation\ICodeSnippetSearchCriteriaValidator.cs" />
     <Compile Include="Modules\SnippetLibrary\ViewModels\IAddTagPageViewModel.cs" />
     <Compile Include="Modules\SnippetLibrary\ViewModels\ISnippetEditDialogViewModel.cs" />
     <Compile Include="Modules\SnippetLibrary\ViewModels\ISnippetLibraryViewModel.cs" />
+    <Compile Include="Modules\SnippetLibrary\ViewModels\PropertyChangedNotificationBase.cs" />
+    <Compile Include="Modules\SnippetLibrary\ViewModels\TagViewModel.cs" />
     <Compile Include="Shared\RegionNames.cs" />
     <Compile Include="DomainModel\CodeSnippet.cs" />
     <Compile Include="DomainModel\Language.cs" />

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
@@ -8,8 +9,12 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.ViewModels
          event EventHandler CloseDialog;
          event EventHandler<string> ShowMsgBox;
 
-
         ICommand Cancel { get; }
         ICommand Save { get; }
+        ICommand Add { get; }
+
+        string SearchTerm { get; set; }
+
+        ObservableCollection<TagViewModel> Tags { get; }
     }
 }

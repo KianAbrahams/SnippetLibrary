@@ -14,5 +14,10 @@ namespace Abrahams.SnippetLibrary.Modules.SnippetLibrary.Views
 
             this.DataContext = addTagPageViewModel;
         }
+
+        private void TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+
+        }
     }
 }

@@ -5,9 +5,15 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Abrahams.SnippetLibrary.Modules.SnippetLibrary.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="500"
-      Title="Add Tags">
+      ResizeMode="CanResize"
+      Height="400" Width="350"
+      d:DesignHeight="400" d:DesignWidth="350"
+      Title="Add Tags" ShowInTaskbar="False">
 
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </Window.Resources>
+    <!--TODO: Remove the minimize and maximize buttons-->
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="16"/>
@@ -25,16 +31,14 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="16"/>
         </Grid.RowDefinitions>
-        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Search, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay}"/>
-        <Button Grid.Row="1" Grid.Column="2" Width="25" Content="+" Command="{Binding AddToTheList}"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay}"/>
+        <Button Grid.Row="1" Grid.Column="2" Width="25" Content="+" Command="{Binding Add}"/>
 
-        <!--remove textbox as its just a placeholder-->
-        <!--<RichTextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3"/>-->
-        <ListBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" ItemsSource="{Binding TheList}">
+        <ListBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" ItemsSource="{Binding Tags}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <CheckBox Content="{Binding Name}" IsChecked="{Binding IsChecked}"/>
+                        <CheckBox Content="{Binding Name}" IsChecked="{Binding IsSelected}" Visibility="{Binding IsVisible, Converter={StaticResource BoolToVis}, FallbackValue=Visible}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -42,7 +46,7 @@
 
         <StackPanel Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Content="Cancel" Command="{Binding Cancel}" Margin="0, 0, 8, 0"  />
-            <Button Content="Ok" Command="{Binding Ok}"/>
+            <Button Content="Ok" Command="{Binding Save}"/>
         </StackPanel>
     </Grid>
 </Window>
