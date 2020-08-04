@@ -1,0 +1,22 @@
+ <!-- https://yuml.me/diagram/scruffy/class/samples -->
+<html>
+    <head>
+        <script src="yuml-diagram.min.js"></script>
+        <script>
+            function loadSvg()
+            {
+                var yumlText = 
+                    `// {type:class}
+                    [A]->[B]`;
+
+                // Generate the diagram
+                var yuml  = new yuml_diagram();
+                var svg = yuml.processYumlDocument(yumlText, false);
+
+                document.body.innerHTML = svg;
+            }
+        </script>
+    </head>
+    <body onload="loadSvg();">        
+    </body>
+</html>
