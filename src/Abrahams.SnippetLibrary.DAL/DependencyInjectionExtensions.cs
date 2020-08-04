@@ -9,6 +9,7 @@ namespace Microsoft.Practices.Unity
         {
             container.RegisterType<ILanguageRepository, SqlClientLanguageRepository>();
             container.RegisterType<ICodeSnippetRepository, SqlClientCodeSnippetRepository>();
+            container.RegisterType<ITagRepository, SqlClientTagRepository>();
         }
     }
 }

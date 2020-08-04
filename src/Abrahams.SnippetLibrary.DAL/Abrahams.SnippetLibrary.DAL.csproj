@@ -53,6 +53,7 @@
     <Compile Include="SqlClient\SqlClientCodeSnippetRepository.cs" />
     <Compile Include="SqlClient\SqlClientLanguageRepository.cs" />
     <Compile Include="SqlClient\SqlClientRepositoryBase.cs" />
+    <Compile Include="SqlClient\SqlClientTagRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Abrahams.SnippetLibrary\Abrahams.SnippetLibrary.csproj">
